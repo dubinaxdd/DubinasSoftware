@@ -1,0 +1,10 @@
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\bin\Debug\MathModeling.exe.config
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\bin\Debug\MathModeling.exe
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\bin\Debug\MathModeling.pdb
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.csprojAssemblyReference.cache
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.Form1.resources
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.Properties.Resources.resources
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.csproj.GenerateResource.cache
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.csproj.CoreCompileInputs.cache
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.exe
+C:\Users\1\Desktop\Учебные материалы\Кац\MathModeling\MathModeling\MathModeling\obj\Debug\MathModeling.pdb
