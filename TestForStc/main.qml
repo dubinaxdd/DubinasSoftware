@@ -1,131 +1,14 @@
 import QtQuick 2.12
 import QtQuick.Window 2.12
 import QtQuick.Controls 2.12
-import QtGraphicalEffects 1.0
+import QtPositioning 5.4
+import QtQuick.Layouts 1.3
 
 
 Window {
     id: window
     visible: true
-    width: 400
-    height: 320
     title: qsTr("ТЗ для СТЦ")
-
-    Grid {
-        id: grid
-        width: 164
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 9
-        anchors.left: parent.left
-        anchors.leftMargin: 20
-        anchors.top: rectangle2.bottom
-        anchors.topMargin: 28
-        spacing: 1
-        rows: 4
-        columns: 4
-        transformOrigin: Item.Center
-
-        Button {
-            id: button
-            width: 40
-            text: qsTr("7")
-        }
-
-        Button {
-            id: button1
-            width: 40
-            text: qsTr("8")
-        }
-
-        Button {
-            id: button2
-            width: 40
-            text: qsTr("9")
-        }
-
-        Button {
-            id: button3
-            width: 40
-            text: qsTr("+")
-        }
-
-        Button {
-            id: button4
-            width: 40
-            text: qsTr("4")
-        }
-
-        Button {
-            id: button5
-            width: 40
-            text: qsTr("5")
-        }
-
-        Button {
-            id: button6
-            width: 40
-            text: qsTr("6")
-        }
-
-        Button {
-            id: button7
-            width: 40
-            text: qsTr("-")
-        }
-
-        Button {
-            id: button8
-            width: 40
-            text: qsTr("1")
-        }
-
-        Button {
-            id: button9
-            width: 40
-            text: qsTr("2")
-        }
-
-        Button {
-            id: button10
-            width: 40
-            text: qsTr("3")
-        }
-
-        Button {
-            id: button11
-            width: 40
-            text: qsTr("*")
-        }
-
-
-
-        Button {
-            id: button17
-            width: 40
-            text: qsTr(".")
-        }
-
-        Button {
-            id: button14
-            width: 40
-            text: qsTr("0")
-        }
-
-
-        Button {
-            id: button16
-            width: 40
-            text: qsTr("=")
-        }
-
-        Button {
-            id: button15
-            width: 40
-            text: qsTr("/")
-        }
-
-
-    }
 
     Rectangle {
         id: rectangle2
@@ -141,8 +24,13 @@ Window {
 
         ScrollView {
             id: scrollView
+            x: 30
+            y: 13
+            width: 200
+            height: 57
+            anchors.verticalCenter: parent.verticalCenter
+            anchors.top: parent.top
             hoverEnabled: true
-            anchors.fill: parent
 
             TextArea {
                 id: textArea
@@ -151,7 +39,6 @@ Window {
                 width: 260
                 height: 82
                 color: "#000000"
-                text: qsTr("0")
                 enabled: true
                 antialiasing: false
                 anchors.bottomMargin: 0
@@ -168,48 +55,199 @@ Window {
         }
     }
 
-    Label {
-        id: label
-        x: 200
-        text: qsTr("Задержка")
-        anchors.right: parent.right
-        anchors.rightMargin: 151
-        anchors.top: element.bottom
-        anchors.topMargin: 6
-    }
+    GridLayout {
+        id: gridLayout
+        x: 39
+        y: 212
+        width: 178
+        height: 183
+        columnSpacing: 1
+        rowSpacing: 1
+        rows: 4
+        columns: 4
 
-    SpinBox {
-        id: spinBox
-        height: 25
-        anchors.left: grid.right
-        anchors.leftMargin: 16
-        anchors.right: parent.right
-        anchors.rightMargin: 37
-        anchors.top: label.bottom
-        anchors.topMargin: 12
+        Button {
+            id: button
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button1
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button2
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button3
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button4
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button5
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button6
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button7
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button8
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button10
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button9
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button11
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button13
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button12
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button15
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+        Button {
+            id: button14
+            text: qsTr("Button")
+            Layout.fillHeight: true
+            Layout.fillWidth: true
+        }
+
+
     }
 
     Text {
         id: element
-        x: 200
+        x: 214
+        y: 158
         width: 180
         height: 104
         text: qsTr("Очередь на вход: 0\nОчередь на выход: 0")
-        anchors.right: parent.right
-        anchors.rightMargin: 20
-        anchors.top: rectangle2.bottom
-        anchors.topMargin: 28
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+        anchors.left: grid.right
         font.pixelSize: 12
+
+        ColumnLayout {
+            id: columnLayout
+            x: 35
+            y: 104
+            width: 100
+            height: 100
+        }
     }
+
+    Label {
+        id: label
+        x: 225
+        y: 196
+        width: 190
+        height: 20
+        text: qsTr("Label")
+        Layout.fillHeight: true
+        Layout.fillWidth: true
+    }
+
+    GridLayout {
+        id: gridLayout1
+        x: 255
+        y: 355
+        width: 100
+        height: 100
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 }
 
 
 
 /*##^##
 Designer {
-    D{i:2;anchors_width:40}D{i:1;anchors_height:177;anchors_x:0;anchors_y:234}D{i:20;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}
-D{i:19;anchors_height:57;anchors_width:200;anchors_x:30;anchors_y:13}D{i:18;anchors_width:200;anchors_x:35;anchors_y:19}
-D{i:21;anchors_y:244}D{i:22;anchors_height:25;anchors_width:163;anchors_x:200;anchors_y:269}
-D{i:23;anchors_y:134}
+    D{i:0;autoSize:true;height:480;width:640}D{i:3;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}
+D{i:2;anchors_height:57;anchors_width:200;anchors_x:30;anchors_y:13}D{i:1;anchors_width:200;anchors_x:35;anchors_y:19}
+D{i:21;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
 }
 ##^##*/
