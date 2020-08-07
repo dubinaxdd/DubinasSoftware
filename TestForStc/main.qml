@@ -18,6 +18,10 @@ Window {
 
     ColumnLayout {
         id: columnLayout1
+        anchors.rightMargin: 10
+        anchors.leftMargin: 10
+        anchors.bottomMargin: 10
+        anchors.topMargin: 10
         anchors.fill: parent
 
         Rectangle {
@@ -63,255 +67,276 @@ Window {
             Layout.fillHeight: true
             Layout.fillWidth: true
 
-            GridLayout {
-                id: gridLayout
-                width: 178
-                height: 183
-                Layout.fillHeight: true
-                Layout.fillWidth: true
-                columnSpacing: 1
-                rowSpacing: 1
-                rows: 4
-                columns: 4
+            ColumnLayout {
+                id: columnLayout2
+                width: 100
+                height: 100
+                spacing: 1
 
-                Button {
-                    id: button_C
-                    text: qsTr("C")
-                    font.pointSize: 14
+                GridLayout {
+                    id: gridLayout
+                    width: 178
+                    height: 183
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
+                    columnSpacing: 1
+                    rowSpacing: 1
+                    rows: 4
+                    columns: 4
+
+                    Button {
+                        id: button_C
+                        text: qsTr("C")
+                        autoRepeat: false
+                        flat: false
+                        highlighted: false
+                        autoExclusive: false
+                        font.pointSize: 14
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                    }
+
+                    Button {
+                        id: button_CE
+                        text: qsTr("CE")
+                        font.pointSize: 14
+                        Layout.fillWidth: true
+                        Layout.fillHeight: true
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                    }
+
+                    Button {
+                        id: button_Backspace
+                        text: qsTr("←")
+                        font.pointSize: 14
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                    }
+
+                    Button {
+                        id: button_Plus
+                        text: qsTr("+")
+                        font.pointSize: 14
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_7
+                        text: qsTr("7")
+                        font.pointSize: 14
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_8
+                        text: qsTr("8")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_9
+                        text: qsTr("9")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+
+                    Button {
+                        id: button_Minus
+                        text: qsTr("-")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_4
+                        text: qsTr("4")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_5
+                        text: qsTr("5")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_6
+                        text: qsTr("6")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+
+                    Button {
+                        id: button_Multiplication
+                        text: qsTr("*")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_1
+                        text: qsTr("1")
+                        font.pointSize: 14
+                        Layout.minimumWidth: 40
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_2
+                        text: qsTr("2")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_3
+                        text: qsTr("3")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+
+                    Button {
+                        id: button_Division
+                        text: qsTr("/")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+
+
+
+
+
+
+
                 }
 
-                Button {
-                    id: button_CE
-                    text: qsTr("CE")
-                    font.pointSize: 14
-                    Layout.fillWidth: true
-                    Layout.fillHeight: true
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
+                RowLayout {
+                    id: rowLayout3
+                    width: 341
+                    height: 100
+                    spacing: 1
+
+                    Button {
+                        id: button_Dot
+                        text: qsTr(".")
+                        font.pointSize: 14
+                        Layout.minimumWidth: 40
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_0
+                        text: qsTr("0")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
+                    Button {
+                        id: button_Equaly
+                        width: 88
+                        height: 40
+                        text: qsTr("=")
+                        font.pointSize: 14
+                        Layout.minimumHeight: 40
+                        Layout.preferredHeight: 40
+                        Layout.minimumWidth: 81
+                        Layout.preferredWidth: 81
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+                    }
+
                 }
-
-                Button {
-                    id: button_Backspace
-                    text: qsTr("←")
-                    font.pointSize: 14
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                }
-
-                Button {
-                    id: button_Plus
-                    text: qsTr("+")
-                    font.pointSize: 14
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_7
-                    text: qsTr("7")
-                    font.pointSize: 14
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_8
-                    text: qsTr("8")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_9
-                    text: qsTr("9")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-
-                Button {
-                    id: button_Minus
-                    text: qsTr("-")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_4
-                    text: qsTr("4")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_5
-                    text: qsTr("5")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_6
-                    text: qsTr("6")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-
-                Button {
-                    id: button_Multiplication
-                    text: qsTr("*")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_1
-                    text: qsTr("1")
-                    font.pointSize: 14
-                    Layout.minimumWidth: 40
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_2
-                    text: qsTr("2")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_3
-                    text: qsTr("3")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-
-                Button {
-                    id: button_Division
-                    text: qsTr("/")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_Dot
-                    text: qsTr(".")
-                    font.pointSize: 14
-                    Layout.minimumWidth: 40
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_0
-                    text: qsTr("0")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button_Equaly
-                    text: qsTr("=")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-
-
-
-
-
-
-
             }
 
             ColumnLayout {
@@ -350,16 +375,10 @@ Window {
 
             }
 
+
         }
     }
 
-    RowLayout {
-        id: rowLayout1
-        x: 62
-        y: 101
-        width: 100
-        height: 100
-    }
 
 
 
@@ -394,7 +413,7 @@ Window {
 /*##^##
 Designer {
     D{i:4;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}
-D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:27;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}D{i:1;anchors_height:100;anchors_width:100;anchors_x:309;anchors_y:25}
+D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:29;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}
 }
 ##^##*/
