@@ -18,10 +18,6 @@ Window {
 
     ColumnLayout {
         id: columnLayout1
-        anchors.rightMargin: 10
-        anchors.leftMargin: 10
-        anchors.bottomMargin: 10
-        anchors.topMargin: 10
         anchors.fill: parent
 
         Rectangle {
@@ -79,43 +75,43 @@ Window {
                 columns: 4
 
                 Button {
-                    id: button
-                    text: qsTr("7")
+                    id: button_C
+                    text: qsTr("C")
                     font.pointSize: 14
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
                     Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
                 }
 
                 Button {
-                    id: button1
-                    text: qsTr("8")
+                    id: button_CE
+                    text: qsTr("CE")
                     font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.fillHeight: true
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
                 }
 
                 Button {
-                    id: button2
-                    text: qsTr("9")
+                    id: button_Backspace
+                    text: qsTr("←")
                     font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredHeight: 40
-                    Layout.preferredWidth: 40
                     Layout.fillHeight: true
                     Layout.fillWidth: true
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
                 }
 
                 Button {
-                    id: button3
+                    id: button_Plus
                     text: qsTr("+")
                     font.pointSize: 14
                     Layout.minimumWidth: 40
@@ -127,8 +123,20 @@ Window {
                 }
 
                 Button {
-                    id: button4
-                    text: qsTr("4")
+                    id: button_7
+                    text: qsTr("7")
+                    font.pointSize: 14
+                    Layout.preferredHeight: 40
+                    Layout.preferredWidth: 40
+                    Layout.minimumHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+                Button {
+                    id: button_8
+                    text: qsTr("8")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
                     Layout.minimumWidth: 40
@@ -139,31 +147,20 @@ Window {
                 }
 
                 Button {
-                    id: button5
-                    text: qsTr("5")
+                    id: button_9
+                    text: qsTr("9")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
                     Layout.minimumWidth: 40
+                    Layout.preferredHeight: 40
                     Layout.preferredWidth: 40
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                 }
 
-                Button {
-                    id: button6
-                    text: qsTr("6")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
 
                 Button {
-                    id: button7
+                    id: button_Minus
                     text: qsTr("-")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
@@ -175,11 +172,11 @@ Window {
                 }
 
                 Button {
-                    id: button8
-                    text: qsTr("1")
+                    id: button_4
+                    text: qsTr("4")
                     font.pointSize: 14
-                    Layout.minimumWidth: 40
                     Layout.minimumHeight: 40
+                    Layout.minimumWidth: 40
                     Layout.preferredHeight: 40
                     Layout.preferredWidth: 40
                     Layout.fillHeight: true
@@ -187,20 +184,8 @@ Window {
                 }
 
                 Button {
-                    id: button10
-                    text: qsTr("2")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
-
-                Button {
-                    id: button9
-                    text: qsTr("3")
+                    id: button_5
+                    text: qsTr("5")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
                     Layout.preferredHeight: 40
@@ -211,7 +196,20 @@ Window {
                 }
 
                 Button {
-                    id: button11
+                    id: button_6
+                    text: qsTr("6")
+                    font.pointSize: 14
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+
+                Button {
+                    id: button_Multiplication
                     text: qsTr("*")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
@@ -223,7 +221,56 @@ Window {
                 }
 
                 Button {
-                    id: button13
+                    id: button_1
+                    text: qsTr("1")
+                    font.pointSize: 14
+                    Layout.minimumWidth: 40
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.preferredWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+                Button {
+                    id: button_2
+                    text: qsTr("2")
+                    font.pointSize: 14
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+                Button {
+                    id: button_3
+                    text: qsTr("3")
+                    font.pointSize: 14
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+
+                Button {
+                    id: button_Division
+                    text: qsTr("/")
+                    font.pointSize: 14
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
+                    Layout.fillHeight: true
+                    Layout.fillWidth: true
+                }
+
+                Button {
+                    id: button_Dot
                     text: qsTr(".")
                     font.pointSize: 14
                     Layout.minimumWidth: 40
@@ -235,7 +282,7 @@ Window {
                 }
 
                 Button {
-                    id: button12
+                    id: button_0
                     text: qsTr("0")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
@@ -247,7 +294,7 @@ Window {
                 }
 
                 Button {
-                    id: button15
+                    id: button_Equaly
                     text: qsTr("=")
                     font.pointSize: 14
                     Layout.minimumHeight: 40
@@ -258,17 +305,11 @@ Window {
                     Layout.fillWidth: true
                 }
 
-                Button {
-                    id: button14
-                    text: qsTr("/")
-                    font.pointSize: 14
-                    Layout.minimumHeight: 40
-                    Layout.preferredHeight: 40
-                    Layout.minimumWidth: 40
-                    Layout.preferredWidth: 40
-                    Layout.fillHeight: true
-                    Layout.fillWidth: true
-                }
+
+
+
+
+
 
 
             }
@@ -281,8 +322,12 @@ Window {
                 Layout.fillWidth: false
 
                 Text {
-                    id: element
+                    id: element_Queue
                     text: qsTr("Очередь на вход: 0\nОчередь на выход: 0")
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
+                    Layout.minimumWidth: 40
+                    Layout.preferredWidth: 40
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     anchors.left: grid.right
@@ -290,7 +335,7 @@ Window {
                 }
 
                 Label {
-                    id: label
+                    id: label_Delay
                     text: qsTr("Задержка")
                     font.pointSize: 13
                     Layout.fillHeight: false
@@ -298,7 +343,7 @@ Window {
                 }
 
                 SpinBox {
-                    id: spinBox
+                    id: spinBox_Delay
                     Layout.fillHeight: false
                     Layout.fillWidth: true
                 }
@@ -306,6 +351,14 @@ Window {
             }
 
         }
+    }
+
+    RowLayout {
+        id: rowLayout1
+        x: 62
+        y: 101
+        width: 100
+        height: 100
     }
 
 
@@ -341,7 +394,7 @@ Window {
 /*##^##
 Designer {
     D{i:4;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}
-D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:24;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:27;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
 D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}D{i:1;anchors_height:100;anchors_width:100;anchors_x:309;anchors_y:25}
 }
 ##^##*/
