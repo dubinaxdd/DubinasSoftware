@@ -110,6 +110,17 @@ Window {
                             Layout.preferredHeight: 40
                             Layout.minimumWidth: 40
                             Layout.preferredWidth: 40
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
+
+
                         }
 
                         Button {
@@ -122,11 +133,21 @@ Window {
                             Layout.preferredHeight: 40
                             Layout.minimumWidth: 40
                             Layout.preferredWidth: 40
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
                             id: button_7
                             text: qsTr("7")
+                            hoverEnabled: true
                             font.pointSize: 14
                             Layout.preferredHeight: 40
                             Layout.preferredWidth: 40
@@ -134,6 +155,15 @@ Window {
                             Layout.minimumWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -146,6 +176,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -158,6 +197,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -170,6 +218,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -182,6 +239,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -194,6 +260,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
                     }
 
@@ -214,6 +289,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -228,22 +312,17 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
                     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
                 }
 
                 GridLayout {
@@ -282,6 +361,15 @@ Window {
                             Layout.preferredHeight: 40
                             Layout.minimumWidth: 40
                             Layout.preferredWidth: 40
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -294,6 +382,15 @@ Window {
                             Layout.preferredHeight: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -306,6 +403,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -318,6 +424,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -330,6 +445,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -342,6 +466,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -354,6 +487,15 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
 
                         Button {
@@ -366,17 +508,16 @@ Window {
                             Layout.preferredWidth: 40
                             Layout.fillHeight: true
                             Layout.fillWidth: true
+
+                            MouseArea {
+                                hoverEnabled: true
+                                anchors.fill: parent
+                                onEntered: {parent.highlighted = true}
+                                onExited: {parent.highlighted = false}
+                                onPressed:{parent.scale = 0.9}
+                                onReleased:{parent.scale = 1}
+                            }
                         }
-
-
-
-
-
-
-
-
-
-
                     }
 
                     Button {
@@ -391,16 +532,18 @@ Window {
                         Layout.preferredWidth: 81
                         Layout.fillHeight: true
                         Layout.fillWidth: true
+
+                        MouseArea {
+                            hoverEnabled: true
+                            anchors.fill: parent
+                            onEntered: {parent.highlighted = true}
+                            onExited: {parent.highlighted = false}
+                            onPressed:{parent.scale = 0.9}
+                            onReleased:{parent.scale = 1}
+                        }
                     }
 
                 }
-
-
-
-
-
-
-
             }
 
             ColumnLayout {
@@ -438,10 +581,6 @@ Window {
                 }
 
             }
-
-
-
-
         }
     }
 
