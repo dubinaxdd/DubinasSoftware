@@ -55,6 +55,7 @@ Window {
                     textFormat: Text.AutoText
                     wrapMode: Text.WrapAnywhere
                     selectByMouse: true
+                    readOnly: true
 
                 }
             }
@@ -574,12 +575,88 @@ Window {
                     Layout.fillWidth: true
                 }
 
-                SpinBox {
-                    id: spinBox_Delay
+                RowLayout {
+                    id: rowLayout2
+                    width: 161
+                    height: 100
+                    Layout.minimumHeight: 40
+                    Layout.preferredHeight: 40
                     Layout.fillHeight: false
                     Layout.fillWidth: true
-                }
+                    spacing: 0
 
+                    Button {
+                        id: button_DelayMinus
+                        text: qsTr("-")
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        MouseArea {
+                            hoverEnabled: true
+                            anchors.fill: parent
+                            onEntered: {parent.highlighted = true}
+                            onExited: {parent.highlighted = false}
+                            onPressed:{parent.scale = 0.9}
+                            onReleased:{parent.scale = 1}
+                        }
+                    }
+
+                    Rectangle {
+                        id: rectangle
+                        width: 200
+                        height: 200
+                        color: "#ffffff"
+                        border.width: 1
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 60
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 60
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        TextInput {
+                            id: textInput_Delay
+                            text: qsTr("0")
+                            anchors.rightMargin: 1
+                            anchors.leftMargin: 1
+                            anchors.bottomMargin: 1
+                            anchors.topMargin: 1
+                            horizontalAlignment: Text.AlignHCenter
+                            verticalAlignment: Text.AlignVCenter
+                            anchors.fill: parent
+                            font.pixelSize: 12
+                            validator: RegExpValidator { regExp: /[0-9]{3}/ }
+
+                        }
+                    }
+
+                    Button {
+                        id: button_DelayPlus
+                        width: 33
+                        height: 40
+                        text: qsTr("+")
+                        Layout.minimumHeight: 40
+                        Layout.minimumWidth: 40
+                        Layout.preferredHeight: 40
+                        Layout.preferredWidth: 40
+                        Layout.fillHeight: true
+                        Layout.fillWidth: true
+
+                        MouseArea {
+                            hoverEnabled: true
+                            anchors.fill: parent
+                            onEntered: {parent.highlighted = true}
+                            onExited: {parent.highlighted = false}
+                            onPressed:{parent.scale = 0.9}
+                            onReleased:{parent.scale = 1}
+                        }
+                    }
+
+                }
             }
         }
     }
@@ -620,7 +697,7 @@ Window {
 Designer {
     D{i:4;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}
 D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:19;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}
-D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}
+D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:57;anchors_height:20;anchors_width:80;anchors_x:-166;anchors_y:93}
+D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}
 }
 ##^##*/
