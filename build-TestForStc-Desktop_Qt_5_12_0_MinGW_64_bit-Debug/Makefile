@@ -237,6 +237,7 @@ Makefile: ../TestForStc/TestForStc.pro ../../Qt/5.12.0/mingw73_64/mkspecs/win32-
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/resources.prf \
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/moc.prf \
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/win32/opengl.prf \
+		../../Qt/5.12.0/mingw73_64/mkspecs/features/uic.prf \
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/qmake_use.prf \
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/file_copies.prf \
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/win32/windows.prf \
@@ -246,6 +247,7 @@ Makefile: ../TestForStc/TestForStc.pro ../../Qt/5.12.0/mingw73_64/mkspecs/win32-
 		../../Qt/5.12.0/mingw73_64/mkspecs/features/lex.prf \
 		../TestForStc/TestForStc.pro \
 		../../Qt/5.12.0/mingw73_64/lib/Qt5Quick.prl \
+		../../Qt/5.12.0/mingw73_64/lib/Qt5Widgets.prl \
 		../../Qt/5.12.0/mingw73_64/lib/Qt5Gui.prl \
 		../../Qt/5.12.0/mingw73_64/lib/Qt5Qml.prl \
 		../../Qt/5.12.0/mingw73_64/lib/Qt5Network.prl \
@@ -428,6 +430,7 @@ Makefile: ../TestForStc/TestForStc.pro ../../Qt/5.12.0/mingw73_64/mkspecs/win32-
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/resources.prf:
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/moc.prf:
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/win32/opengl.prf:
+../../Qt/5.12.0/mingw73_64/mkspecs/features/uic.prf:
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/qmake_use.prf:
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/file_copies.prf:
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/win32/windows.prf:
@@ -437,6 +440,7 @@ Makefile: ../TestForStc/TestForStc.pro ../../Qt/5.12.0/mingw73_64/mkspecs/win32-
 ../../Qt/5.12.0/mingw73_64/mkspecs/features/lex.prf:
 ../TestForStc/TestForStc.pro:
 ../../Qt/5.12.0/mingw73_64/lib/Qt5Quick.prl:
+../../Qt/5.12.0/mingw73_64/lib/Qt5Widgets.prl:
 ../../Qt/5.12.0/mingw73_64/lib/Qt5Gui.prl:
 ../../Qt/5.12.0/mingw73_64/lib/Qt5Qml.prl:
 ../../Qt/5.12.0/mingw73_64/lib/Qt5Network.prl:

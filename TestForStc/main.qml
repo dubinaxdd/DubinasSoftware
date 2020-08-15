@@ -12,9 +12,19 @@ Window {
     visible: true
     title: qsTr("Калькулятор")
     minimumHeight: 400
-    //preferredHeight: 40
     minimumWidth: 420
-    //preferredWidth: 40
+
+    Connections{
+        target: _Form
+        onSendTextToView: {
+
+            textArea.text = _Form.mainText()
+
+            if (textArea.contentHeight > rectangle2.height)
+                flickable.contentY = textArea.contentHeight - rectangle2.height + 10
+        }
+
+    }
 
     ColumnLayout {
         id: columnLayout1
@@ -36,18 +46,29 @@ Window {
             Layout.fillHeight: true
             Layout.fillWidth: true
             border.width: 1
-
-            ScrollView {
-                id: scrollView
-                font.pointSize: 14
+            Flickable {
+                id: flickable
+                flickableDirection: Flickable.VerticalFlick
                 anchors.fill: parent
-                hoverEnabled: true
 
-                TextArea {
+                TextArea.flickable: TextArea {
                     id: textArea
+                    x: 5
+                    y: 5
                     color: "#000000"
                     text: "0"
+                    font.pointSize: 14
+                    anchors.rightMargin: 5
+                    anchors.leftMargin: 5
+                    anchors.bottomMargin: 5
+                    anchors.topMargin: 5
                     anchors.fill: parent
+                    verticalAlignment: Text.AlignTop
+                    padding: 0
+                    leftPadding: 0
+                    rightPadding: 0
+                    bottomPadding: 0
+                    topPadding: 0
                     enabled: true
                     antialiasing: false
                     renderType: Text.QtRendering
@@ -56,9 +77,13 @@ Window {
                     wrapMode: Text.WrapAnywhere
                     selectByMouse: true
                     readOnly: true
+                }
 
+                ScrollBar.vertical: ScrollBar{
+                    id: scrollBar
                 }
             }
+
         }
 
         RowLayout {
@@ -119,6 +144,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonC_onClick();
+                                }
                             }
 
 
@@ -164,6 +194,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button7_onClick();
+                                }
                             }
                         }
 
@@ -185,6 +220,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button8_onClick();
+                                }
                             }
                         }
 
@@ -206,6 +246,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button4_onClick();
+                                }
                             }
                         }
 
@@ -227,6 +272,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button5_onClick();
+                                }
                             }
                         }
 
@@ -248,6 +298,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button1_onClick();
+                                }
                             }
                         }
 
@@ -269,6 +324,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button2_onClick();
+                                }
                             }
                         }
                     }
@@ -298,6 +358,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonDot_onClick();
+                                }
                             }
                         }
 
@@ -321,6 +386,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button0_onClick();
+                                }
                             }
                         }
                     }
@@ -370,6 +440,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonBackspace_onClick();
+                                }
                             }
                         }
 
@@ -391,6 +466,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonPlus_onClick();
+                                }
                             }
                         }
 
@@ -412,6 +492,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button9_onClick();
+                                }
                             }
                         }
 
@@ -433,6 +518,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonMinus_onClick();
+                                }
                             }
                         }
 
@@ -454,6 +544,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button6_onClick();
+                                }
                             }
                         }
 
@@ -475,6 +570,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonMultiplication_onClick();
+                                }
                             }
                         }
 
@@ -496,6 +596,12 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.button3_onClick();
+                                }
+
                             }
                         }
 
@@ -517,6 +623,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonDivision_onClick();
+                                }
                             }
                         }
                     }
@@ -541,6 +652,11 @@ Window {
                             onExited: {parent.highlighted = false}
                             onPressed:{parent.scale = 0.9}
                             onReleased:{parent.scale = 1}
+
+                            onClicked:
+                            {
+                                _Form.buttonEqualy_onClick();
+                            }
                         }
                     }
 
@@ -563,7 +679,7 @@ Window {
                     Layout.preferredWidth: 40
                     Layout.fillHeight: true
                     Layout.fillWidth: true
-                    anchors.left: grid.right
+                    //anchors.left: grid.right
                     font.pixelSize: 12
                 }
 
@@ -659,45 +775,21 @@ Window {
                 }
             }
         }
+
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
 
 
 
 /*##^##
 Designer {
-    D{i:4;anchors_height:82;anchors_width:260;anchors_x:0;anchors_y:0}D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}
-D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}D{i:19;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:57;anchors_height:20;anchors_width:80;anchors_x:-166;anchors_y:93}
-D{i:5;anchors_height:277;anchors_width:472;anchors_x:28;anchors_y:256}D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}
+    D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}D{i:4;anchors_height:23;anchors_width:480;anchors_x:0;anchors_y:0}
+D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}D{i:18;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:17;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:20;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:19;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:31;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:30;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:33;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:57;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
+D{i:56;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:58;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
+D{i:55;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}
 }
 ##^##*/
