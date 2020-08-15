@@ -48,6 +48,10 @@ Window {
             border.width: 1
             Flickable {
                 id: flickable
+                anchors.rightMargin: 5
+                anchors.leftMargin: 5
+                anchors.bottomMargin: 0
+                anchors.topMargin: 0
                 flickableDirection: Flickable.VerticalFlick
                 anchors.fill: parent
 
@@ -60,8 +64,8 @@ Window {
                     font.pointSize: 14
                     anchors.rightMargin: 5
                     anchors.leftMargin: 5
-                    anchors.bottomMargin: 5
-                    anchors.topMargin: 5
+                    anchors.bottomMargin: 0
+                    anchors.topMargin: 0
                     anchors.fill: parent
                     verticalAlignment: Text.AlignTop
                     padding: 0
