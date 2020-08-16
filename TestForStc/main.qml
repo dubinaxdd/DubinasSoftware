@@ -24,6 +24,22 @@ Window {
                 flickable.contentY = textArea.contentHeight - rectangle2.height + 10
         }
 
+        onSendLockActions: {
+            button_Plus.enabled = false;
+            button_Minus.enabled = false;
+            button_Multiplication.enabled = false;
+            button_Division.enabled = false;
+            button_Equaly.enabled = true;
+        }
+
+        onSendUnlockActions:{
+            button_Plus.enabled = true;
+            button_Minus.enabled = true;
+            button_Multiplication.enabled = true;
+            button_Division.enabled = true;
+            button_Equaly.enabled = false;
+        }
+
     }
 
     ColumnLayout {
@@ -176,6 +192,11 @@ Window {
                                 onExited: {parent.highlighted = false}
                                 onPressed:{parent.scale = 0.9}
                                 onReleased:{parent.scale = 1}
+
+                                onClicked:
+                                {
+                                    _Form.buttonCE_onClick();
+                                }
                             }
                         }
 
@@ -648,6 +669,7 @@ Window {
                         Layout.preferredWidth: 81
                         Layout.fillHeight: true
                         Layout.fillWidth: true
+                        enabled: false
 
                         MouseArea {
                             hoverEnabled: true

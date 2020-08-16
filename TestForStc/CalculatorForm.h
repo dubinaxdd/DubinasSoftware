@@ -10,10 +10,15 @@ class QCalculatorForm : public QObject
 public:
     explicit QCalculatorForm(QObject *parent = nullptr) : QObject(parent) {};
 
+private:
+    void clearBlock();
+
 
 signals:
 
     void sendTextToView();
+    void sendLockActions();
+    void sendUnlockActions();
 
  public slots:
      void buttonC_onClick();
