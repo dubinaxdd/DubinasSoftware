@@ -26,10 +26,11 @@ Window {
 
         onSendLockActions: {
             button_Plus.enabled = false;
-            button_Minus.enabled = false;
+            //button_Minus.enabled = false;
             button_Multiplication.enabled = false;
             button_Division.enabled = false;
             button_Equaly.enabled = true;
+            button_Dot.enabled = true;
         }
 
         onSendUnlockActions:{
@@ -38,6 +39,23 @@ Window {
             button_Multiplication.enabled = true;
             button_Division.enabled = true;
             button_Equaly.enabled = false;
+            button_Dot.enabled = true;
+        }
+
+        onSendLockDotButton:{
+            button_Dot.enabled = false;
+        }
+
+        onSendUnlockDotButton:{
+            button_Dot.enabled = true;
+        }
+
+        onSendLockMinusButton:{
+            button_Minus.enabled = false;
+        }
+
+        onSendUnlockMinusButton:{
+            button_Minus.enabled = true;
         }
 
     }
@@ -387,6 +405,7 @@ Window {
                                 onClicked:
                                 {
                                     _Form.buttonDot_onClick();
+                                    button_Dot.enabled = false;
                                 }
                             }
                         }

@@ -12,13 +12,26 @@ public:
 
 private:
     void clearBlock();
+    bool m_Doted = false;
+
+    void NoolCheck();
+    void ActionCheck();
 
 
 signals:
 
     void sendTextToView();
+
     void sendLockActions();
     void sendUnlockActions();
+
+    void sendLockDotButton();
+    void sendUnlockDotButton();
+
+    void sendLockMinusButton();
+    void sendUnlockMinusButton();
+
+
 
  public slots:
      void buttonC_onClick();

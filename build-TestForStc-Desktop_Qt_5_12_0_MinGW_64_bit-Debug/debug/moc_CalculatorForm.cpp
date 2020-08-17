@@ -21,8 +21,8 @@ QT_BEGIN_MOC_NAMESPACE
 QT_WARNING_PUSH
 QT_WARNING_DISABLE_DEPRECATED
 struct qt_meta_stringdata_QCalculatorForm_t {
-    QByteArrayData data[25];
-    char stringdata0[422];
+    QByteArrayData data[29];
+    char stringdata0[502];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -36,30 +36,36 @@ QT_MOC_LITERAL(1, 16, 14), // "sendTextToView"
 QT_MOC_LITERAL(2, 31, 0), // ""
 QT_MOC_LITERAL(3, 32, 15), // "sendLockActions"
 QT_MOC_LITERAL(4, 48, 17), // "sendUnlockActions"
-QT_MOC_LITERAL(5, 66, 15), // "buttonC_onClick"
-QT_MOC_LITERAL(6, 82, 16), // "buttonCE_onClick"
-QT_MOC_LITERAL(7, 99, 23), // "buttonBackspace_onClick"
-QT_MOC_LITERAL(8, 123, 15), // "button1_onClick"
-QT_MOC_LITERAL(9, 139, 15), // "button2_onClick"
-QT_MOC_LITERAL(10, 155, 15), // "button3_onClick"
-QT_MOC_LITERAL(11, 171, 15), // "button4_onClick"
-QT_MOC_LITERAL(12, 187, 15), // "button5_onClick"
-QT_MOC_LITERAL(13, 203, 15), // "button6_onClick"
-QT_MOC_LITERAL(14, 219, 15), // "button7_onClick"
-QT_MOC_LITERAL(15, 235, 15), // "button8_onClick"
-QT_MOC_LITERAL(16, 251, 15), // "button9_onClick"
-QT_MOC_LITERAL(17, 267, 15), // "button0_onClick"
-QT_MOC_LITERAL(18, 283, 17), // "buttonDot_onClick"
-QT_MOC_LITERAL(19, 301, 18), // "buttonPlus_onClick"
-QT_MOC_LITERAL(20, 320, 19), // "buttonMinus_onClick"
-QT_MOC_LITERAL(21, 340, 28), // "buttonMultiplication_onClick"
-QT_MOC_LITERAL(22, 369, 22), // "buttonDivision_onClick"
-QT_MOC_LITERAL(23, 392, 20), // "buttonEqualy_onClick"
-QT_MOC_LITERAL(24, 413, 8) // "mainText"
+QT_MOC_LITERAL(5, 66, 17), // "sendLockDotButton"
+QT_MOC_LITERAL(6, 84, 19), // "sendUnlockDotButton"
+QT_MOC_LITERAL(7, 104, 19), // "sendLockMinusButton"
+QT_MOC_LITERAL(8, 124, 21), // "sendUnlockMinusButton"
+QT_MOC_LITERAL(9, 146, 15), // "buttonC_onClick"
+QT_MOC_LITERAL(10, 162, 16), // "buttonCE_onClick"
+QT_MOC_LITERAL(11, 179, 23), // "buttonBackspace_onClick"
+QT_MOC_LITERAL(12, 203, 15), // "button1_onClick"
+QT_MOC_LITERAL(13, 219, 15), // "button2_onClick"
+QT_MOC_LITERAL(14, 235, 15), // "button3_onClick"
+QT_MOC_LITERAL(15, 251, 15), // "button4_onClick"
+QT_MOC_LITERAL(16, 267, 15), // "button5_onClick"
+QT_MOC_LITERAL(17, 283, 15), // "button6_onClick"
+QT_MOC_LITERAL(18, 299, 15), // "button7_onClick"
+QT_MOC_LITERAL(19, 315, 15), // "button8_onClick"
+QT_MOC_LITERAL(20, 331, 15), // "button9_onClick"
+QT_MOC_LITERAL(21, 347, 15), // "button0_onClick"
+QT_MOC_LITERAL(22, 363, 17), // "buttonDot_onClick"
+QT_MOC_LITERAL(23, 381, 18), // "buttonPlus_onClick"
+QT_MOC_LITERAL(24, 400, 19), // "buttonMinus_onClick"
+QT_MOC_LITERAL(25, 420, 28), // "buttonMultiplication_onClick"
+QT_MOC_LITERAL(26, 449, 22), // "buttonDivision_onClick"
+QT_MOC_LITERAL(27, 472, 20), // "buttonEqualy_onClick"
+QT_MOC_LITERAL(28, 493, 8) // "mainText"
 
     },
     "QCalculatorForm\0sendTextToView\0\0"
     "sendLockActions\0sendUnlockActions\0"
+    "sendLockDotButton\0sendUnlockDotButton\0"
+    "sendLockMinusButton\0sendUnlockMinusButton\0"
     "buttonC_onClick\0buttonCE_onClick\0"
     "buttonBackspace_onClick\0button1_onClick\0"
     "button2_onClick\0button3_onClick\0"
@@ -80,41 +86,49 @@ static const uint qt_meta_data_QCalculatorForm[] = {
        8,       // revision
        0,       // classname
        0,    0, // classinfo
-      23,   14, // methods
+      27,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
        0,       // flags
-       3,       // signalCount
+       7,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  129,    2, 0x06 /* Public */,
-       3,    0,  130,    2, 0x06 /* Public */,
-       4,    0,  131,    2, 0x06 /* Public */,
+       1,    0,  149,    2, 0x06 /* Public */,
+       3,    0,  150,    2, 0x06 /* Public */,
+       4,    0,  151,    2, 0x06 /* Public */,
+       5,    0,  152,    2, 0x06 /* Public */,
+       6,    0,  153,    2, 0x06 /* Public */,
+       7,    0,  154,    2, 0x06 /* Public */,
+       8,    0,  155,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       5,    0,  132,    2, 0x0a /* Public */,
-       6,    0,  133,    2, 0x0a /* Public */,
-       7,    0,  134,    2, 0x0a /* Public */,
-       8,    0,  135,    2, 0x0a /* Public */,
-       9,    0,  136,    2, 0x0a /* Public */,
-      10,    0,  137,    2, 0x0a /* Public */,
-      11,    0,  138,    2, 0x0a /* Public */,
-      12,    0,  139,    2, 0x0a /* Public */,
-      13,    0,  140,    2, 0x0a /* Public */,
-      14,    0,  141,    2, 0x0a /* Public */,
-      15,    0,  142,    2, 0x0a /* Public */,
-      16,    0,  143,    2, 0x0a /* Public */,
-      17,    0,  144,    2, 0x0a /* Public */,
-      18,    0,  145,    2, 0x0a /* Public */,
-      19,    0,  146,    2, 0x0a /* Public */,
-      20,    0,  147,    2, 0x0a /* Public */,
-      21,    0,  148,    2, 0x0a /* Public */,
-      22,    0,  149,    2, 0x0a /* Public */,
-      23,    0,  150,    2, 0x0a /* Public */,
-      24,    0,  151,    2, 0x0a /* Public */,
+       9,    0,  156,    2, 0x0a /* Public */,
+      10,    0,  157,    2, 0x0a /* Public */,
+      11,    0,  158,    2, 0x0a /* Public */,
+      12,    0,  159,    2, 0x0a /* Public */,
+      13,    0,  160,    2, 0x0a /* Public */,
+      14,    0,  161,    2, 0x0a /* Public */,
+      15,    0,  162,    2, 0x0a /* Public */,
+      16,    0,  163,    2, 0x0a /* Public */,
+      17,    0,  164,    2, 0x0a /* Public */,
+      18,    0,  165,    2, 0x0a /* Public */,
+      19,    0,  166,    2, 0x0a /* Public */,
+      20,    0,  167,    2, 0x0a /* Public */,
+      21,    0,  168,    2, 0x0a /* Public */,
+      22,    0,  169,    2, 0x0a /* Public */,
+      23,    0,  170,    2, 0x0a /* Public */,
+      24,    0,  171,    2, 0x0a /* Public */,
+      25,    0,  172,    2, 0x0a /* Public */,
+      26,    0,  173,    2, 0x0a /* Public */,
+      27,    0,  174,    2, 0x0a /* Public */,
+      28,    0,  175,    2, 0x0a /* Public */,
 
  // signals: parameters
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
+    QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
@@ -153,26 +167,30 @@ void QCalculatorForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 0: _t->sendTextToView(); break;
         case 1: _t->sendLockActions(); break;
         case 2: _t->sendUnlockActions(); break;
-        case 3: _t->buttonC_onClick(); break;
-        case 4: _t->buttonCE_onClick(); break;
-        case 5: _t->buttonBackspace_onClick(); break;
-        case 6: _t->button1_onClick(); break;
-        case 7: _t->button2_onClick(); break;
-        case 8: _t->button3_onClick(); break;
-        case 9: _t->button4_onClick(); break;
-        case 10: _t->button5_onClick(); break;
-        case 11: _t->button6_onClick(); break;
-        case 12: _t->button7_onClick(); break;
-        case 13: _t->button8_onClick(); break;
-        case 14: _t->button9_onClick(); break;
-        case 15: _t->button0_onClick(); break;
-        case 16: _t->buttonDot_onClick(); break;
-        case 17: _t->buttonPlus_onClick(); break;
-        case 18: _t->buttonMinus_onClick(); break;
-        case 19: _t->buttonMultiplication_onClick(); break;
-        case 20: _t->buttonDivision_onClick(); break;
-        case 21: _t->buttonEqualy_onClick(); break;
-        case 22: { QString _r = _t->mainText();
+        case 3: _t->sendLockDotButton(); break;
+        case 4: _t->sendUnlockDotButton(); break;
+        case 5: _t->sendLockMinusButton(); break;
+        case 6: _t->sendUnlockMinusButton(); break;
+        case 7: _t->buttonC_onClick(); break;
+        case 8: _t->buttonCE_onClick(); break;
+        case 9: _t->buttonBackspace_onClick(); break;
+        case 10: _t->button1_onClick(); break;
+        case 11: _t->button2_onClick(); break;
+        case 12: _t->button3_onClick(); break;
+        case 13: _t->button4_onClick(); break;
+        case 14: _t->button5_onClick(); break;
+        case 15: _t->button6_onClick(); break;
+        case 16: _t->button7_onClick(); break;
+        case 17: _t->button8_onClick(); break;
+        case 18: _t->button9_onClick(); break;
+        case 19: _t->button0_onClick(); break;
+        case 20: _t->buttonDot_onClick(); break;
+        case 21: _t->buttonPlus_onClick(); break;
+        case 22: _t->buttonMinus_onClick(); break;
+        case 23: _t->buttonMultiplication_onClick(); break;
+        case 24: _t->buttonDivision_onClick(); break;
+        case 25: _t->buttonEqualy_onClick(); break;
+        case 26: { QString _r = _t->mainText();
             if (_a[0]) *reinterpret_cast< QString*>(_a[0]) = std::move(_r); }  break;
         default: ;
         }
@@ -196,6 +214,34 @@ void QCalculatorForm::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
             using _t = void (QCalculatorForm::*)();
             if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QCalculatorForm::sendUnlockActions)) {
                 *result = 2;
+                return;
+            }
+        }
+        {
+            using _t = void (QCalculatorForm::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QCalculatorForm::sendLockDotButton)) {
+                *result = 3;
+                return;
+            }
+        }
+        {
+            using _t = void (QCalculatorForm::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QCalculatorForm::sendUnlockDotButton)) {
+                *result = 4;
+                return;
+            }
+        }
+        {
+            using _t = void (QCalculatorForm::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QCalculatorForm::sendLockMinusButton)) {
+                *result = 5;
+                return;
+            }
+        }
+        {
+            using _t = void (QCalculatorForm::*)();
+            if (*reinterpret_cast<_t *>(_a[1]) == static_cast<_t>(&QCalculatorForm::sendUnlockMinusButton)) {
+                *result = 6;
                 return;
             }
         }
@@ -231,13 +277,13 @@ int QCalculatorForm::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 23)
+        if (_id < 27)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 23;
+        _id -= 27;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 23)
+        if (_id < 27)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 23;
+        _id -= 27;
     }
     return _id;
 }
@@ -258,6 +304,30 @@ void QCalculatorForm::sendLockActions()
 void QCalculatorForm::sendUnlockActions()
 {
     QMetaObject::activate(this, &staticMetaObject, 2, nullptr);
+}
+
+// SIGNAL 3
+void QCalculatorForm::sendLockDotButton()
+{
+    QMetaObject::activate(this, &staticMetaObject, 3, nullptr);
+}
+
+// SIGNAL 4
+void QCalculatorForm::sendUnlockDotButton()
+{
+    QMetaObject::activate(this, &staticMetaObject, 4, nullptr);
+}
+
+// SIGNAL 5
+void QCalculatorForm::sendLockMinusButton()
+{
+    QMetaObject::activate(this, &staticMetaObject, 5, nullptr);
+}
+
+// SIGNAL 6
+void QCalculatorForm::sendUnlockMinusButton()
+{
+    QMetaObject::activate(this, &staticMetaObject, 6, nullptr);
 }
 QT_WARNING_POP
 QT_END_MOC_NAMESPACE
