@@ -3,19 +3,32 @@
 
 #include <QObject>
 #include <QDebug>
+#include <QSettings>
+#include <QApplication>
+#include <QDir>
 
 class QCalculatorForm : public QObject
 {
     Q_OBJECT
 public:
-    explicit QCalculatorForm(QObject *parent = nullptr) : QObject(parent) {};
+    explicit QCalculatorForm(QObject *parent = nullptr);
+    ~QCalculatorForm();
+
+
+    void readSettings();
+    void writeSettings();
 
 private:
     void clearBlock();
     bool m_Doted = false;
 
+    QSize m_FormSize;
+    QPoint m_FormPosition;
+    bool m_FormMaximized = false;
+
     void NoolCheck();
     void ActionCheck();
+
 
 
 signals:
@@ -30,6 +43,8 @@ signals:
 
     void sendLockMinusButton();
     void sendUnlockMinusButton();
+
+    void sendSettingsReaded();
 
 
 
@@ -53,14 +68,29 @@ signals:
      void buttonMultiplication_onClick();
      void buttonDivision_onClick();
      void buttonEqualy_onClick();
+
+     QString mainText() const;
+
+     int getFormWidth(){return m_FormSize.width(); };
+     int getFormHeight(){return m_FormSize.height(); };
+
+     int getFormXPosition(){return m_FormPosition.x(); };
+     int getFormYPosition(){return m_FormPosition.y(); };
+     int getFormMaximized(){return m_FormMaximized; };
+
+     void formXChanged(int AXPosition);
+     void formYChanged(int AYPosition);
+
+     void formWidthChanged(int AWidth);
+     void formHeightChanged(int AHight);
+
+     void formMaximized(bool AMaximased){m_FormMaximized = AMaximased;};
+
  protected:
      //QObject *m_Form;
      QObject *TextBox;
 
      QString m_MainText;
-
-public slots:
-    QString mainText() const;
 
 };
 

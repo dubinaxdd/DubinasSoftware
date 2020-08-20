@@ -1,9 +1,22 @@
 #include "CalculatorForm.h"
 #include "QDebug"
 
+#define DEFAULT_CONFIG_FILE_NAME "/config.ini"
+
 
 #include <QObject>
 
+
+QCalculatorForm::QCalculatorForm(QObject *parent) : QObject(parent)
+{       
+    m_FormSize = QSize(500, 400);
+    m_FormPosition = QPoint(0, 0);
+}
+
+QCalculatorForm::~QCalculatorForm()
+{
+    writeSettings();
+}
 
 void QCalculatorForm::clearBlock()
 {
@@ -55,6 +68,36 @@ void QCalculatorForm::ActionCheck()
         m_MainText.append("0");
     }
 }
+
+void QCalculatorForm::readSettings()
+{
+    QString configFilePath = QApplication::applicationDirPath() + DEFAULT_CONFIG_FILE_NAME;
+
+    QSettings FormSettings(configFilePath, QSettings::IniFormat);
+
+    FormSettings.beginGroup("Calculator");
+    m_FormSize = FormSettings.value("size", QSize(500, 400)).toSize();
+    m_FormPosition = FormSettings.value("pos", QPoint(0,0)).toPoint();
+    m_FormMaximized = FormSettings.value("maximized", false).toBool();
+    FormSettings.endGroup();
+
+    emit sendSettingsReaded();
+}
+
+void QCalculatorForm::writeSettings()
+{
+    QString configFilePath = QApplication::applicationDirPath() + DEFAULT_CONFIG_FILE_NAME;
+
+    QSettings FormSettings(configFilePath, QSettings::IniFormat);
+
+    FormSettings.beginGroup("Calculator");
+    FormSettings.setValue("size", m_FormSize);
+    FormSettings.setValue("pos", m_FormPosition);
+    FormSettings.setValue("maximized", m_FormMaximized);
+    FormSettings.endGroup();
+}
+
+
 
 void QCalculatorForm::buttonC_onClick()
 {
@@ -273,5 +316,44 @@ void QCalculatorForm::buttonEqualy_onClick()
 
 QString QCalculatorForm::mainText() const
 {
-    return m_MainText;
+    QString ReturnedText;
+
+    ReturnedText.append("<font color=\"LimeGreen\">");
+
+    ReturnedText.append(m_MainText);
+
+    for (int i = 0; i < ReturnedText.length(); i++)
+    {
+        if (ReturnedText.at(i) == "\n")
+        {
+            if (ReturnedText.length() > i + 1 && ReturnedText.at(i + 1) == "О")
+                ReturnedText.replace(i,1, "</font><br><font color=\"Yellow\">");
+            else
+                ReturnedText.replace(i,1, "</font><br><font color=\"Lime\">");
+        }
+    }
+
+    ReturnedText.append("</font>");
+
+    return ReturnedText;
+}
+
+void QCalculatorForm::formXChanged(int AXPosition)
+{
+    m_FormPosition.setX(AXPosition);
+}
+
+void QCalculatorForm::formYChanged(int AYPosition)
+{
+    m_FormPosition.setY(AYPosition);
+}
+
+void QCalculatorForm::formWidthChanged(int AWidth)
+{
+    m_FormSize.setWidth(AWidth);
+}
+
+void QCalculatorForm::formHeightChanged(int AHight)
+{
+    m_FormSize.setHeight(AHight);
 }

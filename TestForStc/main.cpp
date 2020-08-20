@@ -31,6 +31,8 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
+    Form.readSettings();
+
 
     return app.exec();
 }

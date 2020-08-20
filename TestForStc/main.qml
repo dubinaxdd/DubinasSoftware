@@ -4,7 +4,6 @@ import QtQuick.Controls 2.12
 import QtPositioning 5.4
 import QtQuick.Layouts 1.3
 
-
 Window {
     id: window
     width: 500
@@ -13,6 +12,34 @@ Window {
     title: qsTr("Калькулятор")
     minimumHeight: 400
     minimumWidth: 420
+    x: 0
+    y: 0
+
+
+    onXChanged: {
+        if (window.visibility == Window.Windowed)
+            _Form.formXChanged(window.x);
+    }
+
+    onYChanged: {
+        if (window.visibility == Window.Windowed)
+            _Form.formYChanged(window.y);
+    }
+
+    onWidthChanged:{
+        if (window.visibility == Window.Windowed)
+            _Form.formWidthChanged(window.width);
+    }
+
+    onHeightChanged: {
+        if (window.visibility == Window.Windowed)
+            _Form.formHeightChanged(window.height);
+    }
+
+    onVisibilityChanged: {
+        if (window.visibility != Window.Hidden)
+            _Form.formMaximized(window.visibility == Window.Maximized);
+    }
 
     Connections{
         target: _Form
@@ -31,6 +58,7 @@ Window {
             button_Division.enabled = false;
             button_Equaly.enabled = true;
             button_Dot.enabled = true;
+
         }
 
         onSendUnlockActions:{
@@ -58,6 +86,25 @@ Window {
             button_Minus.enabled = true;
         }
 
+        onSendSettingsReaded:{
+
+            window.width = _Form.getFormWidth();
+            window.height = _Form.getFormHeight();
+            window.x = _Form.getFormXPosition();
+            window.y = _Form.getFormYPosition();
+
+            if (window.y <= 0 )
+                window.y = 35;
+
+            if (window.x < 0)
+                window.x = 0;
+
+            if (_Form.getFormMaximized())
+                window.showMaximized();
+            else
+                window.showNormal();
+        }
+
     }
 
     ColumnLayout {
@@ -72,20 +119,21 @@ Window {
             id: rectangle2
             width: 200
             height: 82
-            color: "#ffffff"
+            color: "#000000"
+            border.color: "#0508c3"
             Layout.minimumHeight: 100
             Layout.minimumWidth: 400
             Layout.preferredHeight: 100
             Layout.preferredWidth: 400
             Layout.fillHeight: true
             Layout.fillWidth: true
-            border.width: 1
+            border.width: 3
             Flickable {
                 id: flickable
                 anchors.rightMargin: 5
                 anchors.leftMargin: 5
-                anchors.bottomMargin: 0
-                anchors.topMargin: 0
+                anchors.bottomMargin: 5
+                anchors.topMargin: -5
                 flickableDirection: Flickable.VerticalFlick
                 anchors.fill: parent
 
@@ -96,11 +144,6 @@ Window {
                     color: "#000000"
                     text: "0"
                     font.pointSize: 14
-                    anchors.rightMargin: 5
-                    anchors.leftMargin: 5
-                    anchors.bottomMargin: 0
-                    anchors.topMargin: 0
-                    anchors.fill: parent
                     verticalAlignment: Text.AlignTop
                     padding: 0
                     leftPadding: 0
@@ -111,10 +154,11 @@ Window {
                     antialiasing: false
                     renderType: Text.QtRendering
                     horizontalAlignment: Text.AlignLeft
-                    textFormat: Text.AutoText
+                    textFormat: Text.RichText
                     wrapMode: Text.WrapAnywhere
                     selectByMouse: true
                     readOnly: true
+
                 }
 
                 ScrollBar.vertical: ScrollBar{
