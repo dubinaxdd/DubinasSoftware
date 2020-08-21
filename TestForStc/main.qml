@@ -81,31 +81,25 @@ Window {
             case Qt.Key_Delete:
                 _Form.buttonCE_onClick();
                 break;
-
-
             }
         }
     }
 
 
     onXChanged: {
-        if (window.visibility == Window.Windowed)
-            _Form.formXChanged(window.x);
+        _Form.formXChanged(window.x);
     }
 
     onYChanged: {
-        if (window.visibility == Window.Windowed)
-            _Form.formYChanged(window.y);
+        _Form.formYChanged(window.y);
     }
 
     onWidthChanged:{
-        if (window.visibility == Window.Windowed)
-            _Form.formWidthChanged(window.width);
+        _Form.formWidthChanged(window.width);
     }
 
     onHeightChanged: {
-        if (window.visibility == Window.Windowed)
-            _Form.formHeightChanged(window.height);
+        _Form.formHeightChanged(window.height);
     }
 
     onVisibilityChanged: {
@@ -160,21 +154,29 @@ Window {
 
         onSendSettingsReaded:{
 
-            window.width = _Form.getFormWidth();
-            window.height = _Form.getFormHeight();
-            window.x = _Form.getFormXPosition();
-            window.y = _Form.getFormYPosition();
-
-            if (window.y <= 0 )
-                window.y = 35;
-
-            if (window.x < 0)
-                window.x = 0;
-
             if (_Form.getFormMaximized())
+            {
+                window.width = 500;
+                window.height = 400;
+                window.x = 0;
+                window.y = 35;
                 window.showMaximized();
+            }
             else
+            {
+                window.width = _Form.getFormWidth();
+                window.height = _Form.getFormHeight();
+                window.x = _Form.getFormXPosition();
+                window.y = _Form.getFormYPosition();
+
+                if (window.y <= 0 )
+                    window.y = 35;
+
+                if (window.x < 0)
+                    window.x = 0;
+
                 window.showNormal();
+            }
         }
 
     }
