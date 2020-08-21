@@ -133,7 +133,7 @@ Window {
                 anchors.rightMargin: 5
                 anchors.leftMargin: 5
                 anchors.bottomMargin: 5
-                anchors.topMargin: -5
+                anchors.topMargin: 0
                 flickableDirection: Flickable.VerticalFlick
                 anchors.fill: parent
 

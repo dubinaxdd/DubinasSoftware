@@ -7,6 +7,7 @@
 #include <QApplication>
 #include <QDir>
 
+
 class QCalculatorForm : public QObject
 {
     Q_OBJECT
@@ -26,9 +27,10 @@ private:
     QPoint m_FormPosition;
     bool m_FormMaximized = false;
 
+        //QMap m_ActionsMap;
+
     void NoolCheck();
     void ActionCheck();
-
 
 
 signals:
