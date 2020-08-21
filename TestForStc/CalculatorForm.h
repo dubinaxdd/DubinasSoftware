@@ -6,11 +6,35 @@
 #include <QSettings>
 #include <QApplication>
 #include <QDir>
+#include <QtEvents>
+
+
+enum CalcActionType{
+    actPlus,
+    actMinus,
+    actMultiplication,
+    actDivision,
+    actEqualy
+};
+
+enum CalcStringType{
+    calcAction,
+    calcNumber,
+    calcResult
+};
+
+struct TCalcString{
+    CalcStringType Type;
+    QString String;
+};
 
 
 class QCalculatorForm : public QObject
 {
     Q_OBJECT
+
+    QVector<TCalcString> m_CalcStringVector;
+
 public:
     explicit QCalculatorForm(QObject *parent = nullptr);
     ~QCalculatorForm();
@@ -20,17 +44,14 @@ public:
     void writeSettings();
 
 private:
-    void clearBlock();
-    bool m_Doted = false;
-
     QSize m_FormSize;
     QPoint m_FormPosition;
     bool m_FormMaximized = false;
 
-        //QMap m_ActionsMap;
+    void MinusCheck();
 
-    void NoolCheck();
-    void ActionCheck();
+    void NewAction(CalcActionType AActionType);
+    void NewNumber();
 
 
 signals:
@@ -88,11 +109,8 @@ signals:
 
      void formMaximized(bool AMaximased){m_FormMaximized = AMaximased;};
 
- protected:
-     //QObject *m_Form;
-     QObject *TextBox;
 
-     QString m_MainText;
+
 
 };
 

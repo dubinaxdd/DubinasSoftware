@@ -15,6 +15,78 @@ Window {
     x: 0
     y: 0
 
+    Item {
+        focus: true
+        Keys.onPressed: {
+            switch (event.key){
+            case Qt.Key_Enter:
+                if(button_Equaly.enabled == true)
+                    _Form.buttonEqualy_onClick();
+                break;
+            case Qt.Key_Plus:
+                if (button_Plus.enabled == true)
+                    _Form.buttonPlus_onClick();
+                break;
+            case Qt.Key_Minus:
+                if (button_Minus.enabled == true)
+                    _Form.buttonMinus_onClick();
+                break;
+            case Qt.Key_Asterisk:
+                if (button_Multiplication.enabled == true)
+                    _Form.buttonMultiplication_onClick();
+                break;
+            case Qt.Key_Slash:
+                if (button_Division.enabled == true)
+                    _Form.buttonDivision_onClick();
+                break;
+            case Qt.Key_0:
+                _Form.button0_onClick();
+                break;
+            case Qt.Key_1:
+                _Form.button1_onClick();
+                break;
+            case Qt.Key_2:
+                _Form.button2_onClick();
+                break;
+            case Qt.Key_3:
+                _Form.button3_onClick();
+                break;
+            case Qt.Key_4:
+                _Form.button4_onClick();
+                break;
+            case Qt.Key_5:
+                _Form.button5_onClick();
+                break;
+            case Qt.Key_6:
+                _Form.button6_onClick();
+                break;
+            case Qt.Key_7:
+                _Form.button7_onClick();
+                break;
+            case Qt.Key_8:
+                _Form.button8_onClick();
+                break;
+            case Qt.Key_9:
+                _Form.button9_onClick();
+                break;
+            case Qt.Key_Period:
+                if(button_Dot.enabled == true)
+                    _Form.buttonDot_onClick();
+                break;
+
+            case Qt.Key_Backspace:
+                _Form.buttonBackspace_onClick();
+                break;
+
+            case Qt.Key_Delete:
+                _Form.buttonCE_onClick();
+                break;
+
+
+            }
+        }
+    }
+
 
     onXChanged: {
         if (window.visibility == Window.Windowed)

@@ -11,6 +11,8 @@ QCalculatorForm::QCalculatorForm(QObject *parent) : QObject(parent)
 {       
     m_FormSize = QSize(500, 400);
     m_FormPosition = QPoint(0, 0);
+
+    NewNumber();
 }
 
 QCalculatorForm::~QCalculatorForm()
@@ -18,55 +20,82 @@ QCalculatorForm::~QCalculatorForm()
     writeSettings();
 }
 
-void QCalculatorForm::clearBlock()
+void QCalculatorForm::MinusCheck()
 {
-    while (m_MainText.length() > 0 && m_MainText.at(m_MainText.length() - 1) != "\n")
-        m_MainText.remove(m_MainText.length() - 1, 1);
-
-    if (m_MainText.length() > 1 && m_MainText.at(m_MainText.length() - 2) == "=")
-    {
-        for (int i = 0; i < 4; i++)
-        {
-            if(m_MainText.at(m_MainText.length() - 1) == "\n")
-                m_MainText.remove(m_MainText.length() - 3, 3);
-            else
-            {
-                while (m_MainText.length() > 0 && m_MainText.at(m_MainText.length() - 1) != "\n")
-                    m_MainText.remove(m_MainText.length() - 1, 1);
-            }
-        }
-    }
-}
-
-void QCalculatorForm::NoolCheck()
-{
-    if (m_MainText.length() > 1 && m_MainText.at(m_MainText.length() - 1) == "0" && m_MainText.at(m_MainText.length() - 2) == "\n")
-    {
-       m_MainText.append(".");
-       emit sendLockDotButton();
-    }
-    else if (m_MainText.length() == 1 && m_MainText.at(m_MainText.length() - 1) == "0")
-    {
-        m_MainText.append(".");
-        emit sendLockDotButton();
-    }
-
-
-    if (m_MainText.length() > 3 && m_MainText.at(m_MainText.length() - 3) == "\n" && m_MainText.at(m_MainText.length() - 1) == "\n")
+    if (m_CalcStringVector.length() > 2
+        && m_CalcStringVector.at(m_CalcStringVector.length() - 2).Type == calcAction
+        && m_CalcStringVector.last().String.isEmpty())
         emit sendLockMinusButton();
 }
 
-void QCalculatorForm::ActionCheck()
+void QCalculatorForm::NewAction(CalcActionType AActionType)
 {
-    if (m_MainText.length() == 0)
-        m_MainText.append("0");
-    else if (m_MainText.at(m_MainText.length() - 1) == "." || m_MainText.at(m_MainText.length() - 1) == "\n" || m_MainText.at(m_MainText.length() - 1) == "-")
-    {
-        if (m_MainText.at(m_MainText.length() - 1) == "-")
-             m_MainText.remove(m_MainText.length() - 1, 1);
+    if (m_CalcStringVector.last().String.length() == 1
+        && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 1) == "-")
 
-        m_MainText.append("0");
+        m_CalcStringVector.last().String.remove(m_CalcStringVector.last().String.length() - 1, 1);
+
+    if (m_CalcStringVector.last().String.isEmpty()
+        || m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 1) == ".")
+
+        m_CalcStringVector.last().String.append("0");
+
+    TCalcString newCalcString;
+
+    newCalcString.Type = calcAction;
+
+    switch (AActionType) {
+    case actPlus :
+        newCalcString.String = "+";
+        break;
+
+    case actMinus :
+        newCalcString.String = "-";
+        break;
+
+    case actMultiplication :
+        newCalcString.String = "*";
+        break;
+
+    case actDivision :
+        newCalcString.String = "/";
+        break;
+
+    case actEqualy :
+        newCalcString.String = "=";
+        break;
+
     }
+
+    m_CalcStringVector.append(newCalcString);
+
+
+    if (AActionType == actEqualy)
+    {
+        newCalcString.Type = calcResult;
+        newCalcString.String = "Ожидание результата [_]";
+
+        m_CalcStringVector.append(newCalcString);
+
+        emit sendUnlockActions();
+    }
+    else
+        emit sendLockActions();
+
+    NewNumber();
+
+    emit sendTextToView();
+
+}
+
+void QCalculatorForm::NewNumber()
+{
+    TCalcString newCalcString;
+
+    newCalcString.Type = calcNumber;
+    newCalcString.String = "";
+
+    m_CalcStringVector.append(newCalcString);
 }
 
 void QCalculatorForm::readSettings()
@@ -101,164 +130,162 @@ void QCalculatorForm::writeSettings()
 
 void QCalculatorForm::buttonC_onClick()
 {
-    if (!m_MainText.isEmpty())
-    {
-        m_MainText.clear();
-        emit sendTextToView();
-        emit sendUnlockActions();
-        emit sendUnlockDotButton();
-    }
+    m_CalcStringVector.clear();
+
+    NewNumber();
+
+    emit sendTextToView();
+    emit sendUnlockActions();
+    emit sendUnlockDotButton();
 }
 
 ///Удаляет строку, если последняя строка - результат, то удаляет весь блок
 void QCalculatorForm::buttonCE_onClick()
 {
-    if (m_MainText.length() > 0)
+    if (m_CalcStringVector.last().String.isEmpty() && m_CalcStringVector.at(m_CalcStringVector.length() - 1).Type == calcNumber)
     {
-
-        if(m_MainText.at(m_MainText.length() - 1) == "\n")
+        if (m_CalcStringVector.length() > 5 && m_CalcStringVector.at(m_CalcStringVector.length() - 2).Type == calcResult)
         {
-            QChar sign = m_MainText.at(m_MainText.length() - 2);
-
-            //Если удаляем знак действия
-            if (sign == "+" || sign == "-" || sign == "*" || sign == "/")
-            {
-                m_MainText.remove(m_MainText.length() - 3, 3);
-                emit sendUnlockActions();
-            }
-            else
-            {
-                m_MainText.remove(m_MainText.length() - 1, 1);
-                clearBlock();
-            }
+            m_CalcStringVector.remove(m_CalcStringVector.length() - 6, 6);
+            NewNumber();
+            emit sendUnlockActions();
         }
-        else
+        else if (m_CalcStringVector.length() > 2 && m_CalcStringVector.at(m_CalcStringVector.length() - 2).Type == calcAction)
         {
-            clearBlock();
+            m_CalcStringVector.remove(m_CalcStringVector.length() - 2, 2);
+            emit sendUnlockActions();
         }
-
-        emit sendTextToView();
-        emit sendUnlockDotButton();
     }
+    else
+        m_CalcStringVector.last().String = "";
+
+
+    emit sendTextToView();
+    emit sendUnlockDotButton();
 }
 
 
 void QCalculatorForm::buttonBackspace_onClick()
 {
-    if (m_MainText.length() > 0)
+    if (m_CalcStringVector.last().String.isEmpty())
+        buttonCE_onClick();
+    else
     {
-        if(m_MainText.at(m_MainText.length() - 1) == "\n")
+        if (m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 1) == ".")
         {
-            int i = 1;
-            while (m_MainText.length() - i - 1 >= 0 && m_MainText.at(m_MainText.length() - i - 1) != "\n")
+            emit sendUnlockDotButton();
+
+            if (m_CalcStringVector.last().String.length() == 3
+                && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 3) == "-"
+                && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 2) == "0")
             {
-                i++;
+                m_CalcStringVector.last().String.remove(m_CalcStringVector.last().String.length() - 1, 1);
             }
 
-            if (m_MainText.length() >= i + 2 && m_MainText.at(m_MainText.length() - i - 2) == "=")
+            if (m_CalcStringVector.last().String.length() == 2
+                && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 2) == "0")
             {
-                buttonCE_onClick();
-            }
-            else
-                m_MainText.remove(m_MainText.length() - 3, 3);
-            emit sendUnlockActions();
-        }
-        else
-        {
-            if (m_MainText.at(m_MainText.length() - 1) == ".")
-                emit sendUnlockDotButton();
-
-            if (m_MainText.at(m_MainText.length() - 1) == "-")
-                emit sendUnlockMinusButton();
-
-            m_MainText.remove(m_MainText.length() - 1, 1);
-
-            if (m_MainText.length() > 2 && m_MainText.at(m_MainText.length() - 3) == "\n" && m_MainText.at(m_MainText.length() - 1) == "\n")
-            {
-                if (m_MainText.at(m_MainText.length() - 2) == "+" || m_MainText.at(m_MainText.length() - 2) == "-" ||m_MainText.at(m_MainText.length() - 2) == "*" || m_MainText.at(m_MainText.length() - 2) == "/")
-                emit sendUnlockMinusButton();
+                m_CalcStringVector.last().String.remove(m_CalcStringVector.last().String.length() - 1, 1);
             }
         }
 
-        emit sendTextToView();
+        m_CalcStringVector.last().String.remove(m_CalcStringVector.last().String.length() - 1, 1);
+
+        if (m_CalcStringVector.last().String.isEmpty())
+            emit sendUnlockMinusButton();
     }
+
+    emit sendTextToView();
 }
 
 void QCalculatorForm::button1_onClick()
 {
-    NoolCheck();
-    m_MainText.append("1");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("1");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button2_onClick()
 {
-    NoolCheck();
-    m_MainText.append("2");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("2");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button3_onClick()
 {
-    NoolCheck();
-    m_MainText.append("3");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("3");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button4_onClick()
 {
-    NoolCheck();
-    m_MainText.append("4");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("4");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button5_onClick()
 {
-    NoolCheck();
-    m_MainText.append("5");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("5");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button6_onClick()
 {
-    NoolCheck();
-    m_MainText.append("6");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("6");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button7_onClick()
 {
-    NoolCheck();
-    m_MainText.append("7");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("7");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button8_onClick()
 {
-    NoolCheck();
-    m_MainText.append("8");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("8");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button9_onClick()
 {
-    NoolCheck();
-    m_MainText.append("9");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("9");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button0_onClick()
 {
-    NoolCheck();
-    m_MainText.append("0");
+    MinusCheck();
+    m_CalcStringVector.last().String.append("0");
+
+    if ((m_CalcStringVector.last().String.length() == 1)
+        || (m_CalcStringVector.last().String.length() == 2
+            && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 2) == "-"))
+    {
+        m_CalcStringVector.last().String.append(".");
+        emit sendLockDotButton();
+    }
+
     emit sendTextToView();
 }
 
 void QCalculatorForm::buttonDot_onClick()
 {
-    if (m_MainText.isEmpty() || m_MainText.at(m_MainText.length() - 1) == "\n")
-        m_MainText.append("0");
-    m_MainText.append(".");
+    if(m_CalcStringVector.last().String.isEmpty()
+       || (m_CalcStringVector.last().String.at(0) == "-"
+       && m_CalcStringVector.last().String.length() == 1))
+
+        m_CalcStringVector.last().String.append("0");
+
+    m_CalcStringVector.last().String.append(".");
     emit sendTextToView();
     emit sendLockDotButton();
 
@@ -266,76 +293,56 @@ void QCalculatorForm::buttonDot_onClick()
 
 void QCalculatorForm::buttonPlus_onClick()
 {
-    ActionCheck();
-    m_MainText.append("\n+\n");
-    emit sendTextToView();
-    emit sendLockActions();
+    NewAction(actPlus);
 }
 
 void QCalculatorForm::buttonMinus_onClick()
 {
-    if(m_MainText.isEmpty() || m_MainText.at(m_MainText.length() - 1) == "\n")
+    if (m_CalcStringVector.last().String.isEmpty())
     {
-        m_MainText.append("-");
+        m_CalcStringVector.last().String.append("-");
 
-        if (m_MainText.length() > 4 && m_MainText.at(m_MainText.length() - 4) == "\n")
+        if (m_CalcStringVector.length() > 2 && m_CalcStringVector.at(m_CalcStringVector.length()-2).Type == calcAction)
             emit sendLockMinusButton();
+
+        emit sendTextToView();
     }
     else
-    {
-        ActionCheck();
-        m_MainText.append("\n-\n");
-        emit sendLockActions();
-    }
-    emit sendTextToView();
+        NewAction(actMinus);
 }
 
 void QCalculatorForm::buttonMultiplication_onClick()
 {
-    ActionCheck();
-    m_MainText.append("\n*\n");
-    emit sendTextToView();
-    emit sendLockActions();
+    NewAction(actMultiplication);
 }
 
 void QCalculatorForm::buttonDivision_onClick()
 {
-    ActionCheck();
-    m_MainText.append("\n/\n");
-    emit sendTextToView();
-    emit sendLockActions();
+    NewAction(actDivision);
 }
 
 void QCalculatorForm::buttonEqualy_onClick()
 {
-    ActionCheck();
-    m_MainText.append("\n=\nОжидание результата\n");
-    emit sendTextToView();
-    emit sendUnlockActions();
+    NewAction(actEqualy);
 }
 
 QString QCalculatorForm::mainText() const
 {
     QString ReturnedText;
 
-    ReturnedText.append("<font color=\"LimeGreen\">");
-
-    ReturnedText.append(m_MainText);
-
-    for (int i = 0; i < ReturnedText.length(); i++)
+    for( int i = 0; i < m_CalcStringVector.length(); i++)
     {
-        if (ReturnedText.at(i) == "\n")
-        {
-            if (ReturnedText.length() > i + 1 && ReturnedText.at(i + 1) == "О")
-                ReturnedText.replace(i,1, "</font><br><font color=\"Yellow\">");
-            else
-                ReturnedText.replace(i,1, "</font><br><font color=\"Lime\">");
-        }
+        if (m_CalcStringVector.at(i).Type == calcResult)
+            ReturnedText.append("<font color=\"Yellow\">");
+        else
+            ReturnedText.append("<font color=\"LimeGreen\">");
+
+        ReturnedText.append(m_CalcStringVector.at(i).String);
+        ReturnedText.append("<\font><br>");
     }
 
-    ReturnedText.append("</font>");
-
     return ReturnedText;
+
 }
 
 void QCalculatorForm::formXChanged(int AXPosition)
@@ -356,4 +363,15 @@ void QCalculatorForm::formWidthChanged(int AWidth)
 void QCalculatorForm::formHeightChanged(int AHight)
 {
     m_FormSize.setHeight(AHight);
+}
+
+bool keyPressEvent(QKeyEvent *event)
+{
+    qDebug() << event->key();
+
+
+    /*if( event->key() == Qt::Key_A )
+    {
+        // do your stuff here
+    }*/
 }
