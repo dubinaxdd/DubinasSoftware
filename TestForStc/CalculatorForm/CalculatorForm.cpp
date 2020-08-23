@@ -323,6 +323,26 @@ void QCalculatorForm::buttonDivision_onClick()
 
 void QCalculatorForm::buttonEqualy_onClick()
 {
+
+    requestAction reqAction = reqPlus;
+
+    QString NeedString = m_CalcStringVector.at(m_CalcStringVector.length() - 2).String;
+
+    if (NeedString == "+")
+        reqAction = reqPlus;
+    else if (NeedString == "-")
+        reqAction = reqMinus;
+    else if (NeedString == "*")
+        reqAction = reqMultiplication;
+    else if (NeedString == "/")
+        reqAction = reqDivision;
+
+
+    double NeedFirstOperand = m_CalcStringVector.at(m_CalcStringVector.length() - 3).String.toDouble();
+    double NeedSecondOperand = m_CalcStringVector.at(m_CalcStringVector.length() - 1).String.toDouble();
+
+    emit sendRequest(reqAction, NeedFirstOperand, NeedSecondOperand);
+
     NewAction(actEqualy);
 }
 
@@ -365,13 +385,3 @@ void QCalculatorForm::formHeightChanged(int AHight)
     m_FormSize.setHeight(AHight);
 }
 
-bool keyPressEvent(QKeyEvent *event)
-{
-    qDebug() << event->key();
-
-
-    /*if( event->key() == Qt::Key_A )
-    {
-        // do your stuff here
-    }*/
-}

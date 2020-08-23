@@ -5,9 +5,7 @@
 #include <QDebug>
 #include <QSettings>
 #include <QApplication>
-#include <QDir>
-#include <QtEvents>
-
+#include <CalculatorTypes.h>
 
 enum CalcActionType{
     actPlus,
@@ -69,6 +67,8 @@ signals:
 
     void sendSettingsReaded();
 
+    void sendRequest(requestAction AAction, double AFirstOperand, double ASecondOperand);
+
 
 
  public slots:
@@ -108,10 +108,6 @@ signals:
      void formHeightChanged(int AHight);
 
      void formMaximized(bool AMaximased){m_FormMaximized = AMaximased;};
-
-
-
-
 };
 
 #endif // CALCULATORFORM_H

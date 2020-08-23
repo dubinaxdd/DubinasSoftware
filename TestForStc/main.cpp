@@ -1,12 +1,20 @@
+//QT 5.12.0, MinGW 7.3.0 x64
+//Created by Pishcheta E.A. 08.2020
+
 #include <QGuiApplication>
-#include <CalculatorForm.h>
 #include <QQmlContext>
 #include <QQuickView>
 #include <QGuiApplication>
 #include <QQmlApplicationEngine>
 
+#include <CalculatorForm.h>
+#include <CalculatorModel.h>
+
 int main(int argc, char *argv[])
 {
+
+    qRegisterMetaType<requestAction>("requestAction");
+
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
     QGuiApplication app(argc, argv);
@@ -16,9 +24,15 @@ int main(int argc, char *argv[])
 
     QQmlContext *context = engine.rootContext();
 
-    QCalculatorForm Form(context);
+    //Объект формы
+    QCalculatorForm *Form = new QCalculatorForm(context);
 
-    context->setContextProperty("_Form", &Form);
+    //Объект модели
+    QCalculatorModel *Model = new QCalculatorModel();
+
+    QObject::connect(Form, &QCalculatorForm::sendRequest, Model, &QCalculatorModel::receiveRequest,Qt::QueuedConnection);
+
+    context->setContextProperty("_Form", Form);
 
 
     QObject::connect(&engine, &QQmlApplicationEngine::objectCreated, &app,
@@ -31,7 +45,7 @@ int main(int argc, char *argv[])
 
     engine.load(url);
 
-    Form.readSettings();
+    Form->readSettings();
 
 
     return app.exec();
