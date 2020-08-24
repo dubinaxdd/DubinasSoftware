@@ -346,6 +346,29 @@ void QCalculatorForm::buttonEqualy_onClick()
     NewAction(actEqualy);
 }
 
+void QCalculatorForm::buttonDelayPlus_onClick()
+{
+    if (m_Delay < 999)
+        m_Delay++;
+
+    emit sendDelay(m_Delay);
+}
+
+void QCalculatorForm::buttonDelayMinus_onClick()
+{
+    if (m_Delay > 0 )
+        m_Delay--;
+
+    emit sendDelay(m_Delay);
+}
+
+void QCalculatorForm::setDelay(QString ADelayString)
+{
+    m_Delay = ADelayString.toInt();
+
+    emit sendDelay(m_Delay);
+}
+
 QString QCalculatorForm::mainText() const
 {
     QString ReturnedText;
@@ -363,6 +386,16 @@ QString QCalculatorForm::mainText() const
 
     return ReturnedText;
 
+}
+
+QString QCalculatorForm::getDelayNumber()
+{
+    return QString::number(m_Delay);
+}
+
+QString QCalculatorForm::getDataStatisticString()
+{
+    return "Очередь на вход: " + QString::number(m_RequestCount) + "\nКоличество результатов: " + QString::number(m_ResultCount);
 }
 
 void QCalculatorForm::formXChanged(int AXPosition)
@@ -383,5 +416,46 @@ void QCalculatorForm::formWidthChanged(int AWidth)
 void QCalculatorForm::formHeightChanged(int AHight)
 {
     m_FormSize.setHeight(AHight);
+}
+
+void QCalculatorForm::receiveResult(double AResult, errorType AErrType, int resultArrayLength)
+{
+
+    m_ResultCount = resultArrayLength;
+
+    emit sendUpdateDataStatistic();
+
+    for (int i = 0; i < m_CalcStringVector.length(); i++)
+    {
+        if (m_CalcStringVector.at(i).Type == calcResult && m_CalcStringVector.at(i).String.left(2) == "Ож")
+        {
+            switch (AErrType)
+            {
+                case errNoError:
+                {
+                    m_CalcStringVector[i].String = QString::number(AResult);
+                    break;
+                }
+
+                case errNullDivision:
+                {
+                    m_CalcStringVector[i].String = "Ошибка: Деление на ноль.";
+                    break;
+                }
+            }
+
+            emit sendTextToView();
+
+            break;
+        }
+    }
+
+}
+
+void QCalculatorForm::receiveRequestDataLength(int ARequestsLength)
+{
+    m_RequestCount = ARequestsLength;
+
+    emit sendUpdateDataStatistic();
 }
 

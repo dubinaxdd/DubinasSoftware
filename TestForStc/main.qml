@@ -179,6 +179,10 @@ Window {
             }
         }
 
+        onSendUpdateDataStatistic: {
+            element_Queue.text = _Form.getDataStatisticString();
+        }
+
     }
 
     ColumnLayout {
@@ -835,7 +839,8 @@ Window {
 
                 Text {
                     id: element_Queue
-                    text: qsTr("Очередь на вход: 0\nОчередь на выход: 0")
+                    width: 140
+                    text: qsTr("Очередь на вход: 0\nКоличество результатов: 0")
                     Layout.minimumHeight: 40
                     Layout.preferredHeight: 40
                     Layout.minimumWidth: 40
@@ -843,7 +848,7 @@ Window {
                     Layout.fillHeight: true
                     Layout.fillWidth: true
                     //anchors.left: grid.right
-                    font.pixelSize: 12
+                    font.pixelSize: 10
                 }
 
                 Label {
@@ -881,6 +886,11 @@ Window {
                             onExited: {parent.highlighted = false}
                             onPressed:{parent.scale = 0.9}
                             onReleased:{parent.scale = 1}
+
+                            onClicked: {
+                                _Form.buttonDelayMinus_onClick();
+                                textInput_Delay.text = _Form.getDelayNumber();
+                            }
                         }
                     }
 
@@ -910,6 +920,10 @@ Window {
                             font.pixelSize: 12
                             validator: RegExpValidator { regExp: /[0-9]{3}/ }
 
+                            onTextChanged: {
+                                _Form.setDelay(textInput_Delay.text);
+                            }
+
                         }
                     }
 
@@ -932,13 +946,16 @@ Window {
                             onExited: {parent.highlighted = false}
                             onPressed:{parent.scale = 0.9}
                             onReleased:{parent.scale = 1}
+
+                            onClicked: {
+                                _Form.buttonDelayPlus_onClick();
+                                textInput_Delay.text = _Form.getDelayNumber();
+                            }
                         }
                     }
-
                 }
             }
         }
-
     }
 }
 
@@ -946,13 +963,13 @@ Window {
 
 /*##^##
 Designer {
-    D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}D{i:4;anchors_height:23;anchors_width:480;anchors_x:0;anchors_y:0}
-D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}D{i:18;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:17;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:20;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:19;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:31;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:30;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:33;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
-D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:57;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
-D{i:56;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:58;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
-D{i:55;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}
+    D{i:1;anchors_height:100;anchors_width:100;anchors_x:175;anchors_y:22}D{i:2;anchors_height:82;anchors_width:200;anchors_x:28;anchors_y:20}
+D{i:4;anchors_height:23;anchors_width:480;anchors_x:0;anchors_y:0}D{i:17;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:19;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:18;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:20;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:30;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:32;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:31;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}
+D{i:33;anchors_height:104;anchors_width:180;anchors_x:200;anchors_y:134}D{i:55;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
+D{i:58;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:57;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}
+D{i:56;anchors_height:20;anchors_width:80;anchors_x:"-166";anchors_y:93}D{i:3;anchors_height:57;anchors_width:200;anchors_x:23;anchors_y:15}
 }
 ##^##*/

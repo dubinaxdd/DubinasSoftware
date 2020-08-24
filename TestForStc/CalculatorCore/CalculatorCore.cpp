@@ -22,12 +22,13 @@ void QCalculatorCore::run()
 
             m_DataManager->appendResult(NewResult);
 
-            //sleep(1);
+            sleep(m_DataManager->getDelay());
+
+            emit sendResultReady();
         }
-        else
-        {
-            //sleep(1);
-        }
+        //else
+           // sleep(m_DataManager->getDelay());
+
     }
 }
 

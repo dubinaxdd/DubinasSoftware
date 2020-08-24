@@ -14,6 +14,9 @@ int main(int argc, char *argv[])
 {
 
     qRegisterMetaType<requestAction>("requestAction");
+    qRegisterMetaType<errorType>("errorType");
+
+
 
     QCoreApplication::setAttribute(Qt::AA_EnableHighDpiScaling);
 
@@ -31,6 +34,9 @@ int main(int argc, char *argv[])
     QCalculatorModel *Model = new QCalculatorModel();
 
     QObject::connect(Form, &QCalculatorForm::sendRequest, Model, &QCalculatorModel::receiveRequest,Qt::QueuedConnection);
+    QObject::connect(Model, &QCalculatorModel::sendResult, Form, &QCalculatorForm::receiveResult, Qt::QueuedConnection);
+    QObject::connect(Form, &QCalculatorForm::sendDelay, Model, &QCalculatorModel::receiveDelay, Qt::QueuedConnection);
+    QObject::connect(Model, &QCalculatorModel::sendRequestDataLength, Form, &QCalculatorForm::receiveRequestDataLength, Qt::QueuedConnection);
 
     context->setContextProperty("_Form", Form);
 

@@ -33,6 +33,11 @@ class QCalculatorForm : public QObject
 
     QVector<TCalcString> m_CalcStringVector;
 
+    QString m_DataStatisticString;
+
+    int m_RequestCount = 0;
+    int m_ResultCount = 0;
+
 public:
     explicit QCalculatorForm(QObject *parent = nullptr);
     ~QCalculatorForm();
@@ -44,7 +49,9 @@ public:
 private:
     QSize m_FormSize;
     QPoint m_FormPosition;
-    bool m_FormMaximized = false;
+    bool m_FormMaximized = false;  
+
+    int m_Delay = 0;
 
     void MinusCheck();
 
@@ -69,6 +76,10 @@ signals:
 
     void sendRequest(requestAction AAction, double AFirstOperand, double ASecondOperand);
 
+    void sendDelay(int ADelay);
+
+    void sendUpdateDataStatistic();
+
 
 
  public slots:
@@ -91,6 +102,9 @@ signals:
      void buttonMultiplication_onClick();
      void buttonDivision_onClick();
      void buttonEqualy_onClick();
+     void buttonDelayPlus_onClick();
+     void buttonDelayMinus_onClick();
+     void setDelay(QString ADelayString);
 
      QString mainText() const;
 
@@ -101,6 +115,9 @@ signals:
      int getFormYPosition(){return m_FormPosition.y(); };
      int getFormMaximized(){return m_FormMaximized; };
 
+     QString getDelayNumber();
+     QString getDataStatisticString();
+
      void formXChanged(int AXPosition);
      void formYChanged(int AYPosition);
 
@@ -108,6 +125,9 @@ signals:
      void formHeightChanged(int AHight);
 
      void formMaximized(bool AMaximased){m_FormMaximized = AMaximased;};
+
+     void receiveResult(double AResult, errorType AErrType, int resultArrayLength);
+     void receiveRequestDataLength(int ARequestsLength);
 };
 
 #endif // CALCULATORFORM_H

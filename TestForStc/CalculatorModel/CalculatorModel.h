@@ -16,8 +16,6 @@ class QCalculatorModel : public QObject
 
     TThreadSafeCalcDataManager *m_DataManager;
 
-    int m_ThreadPauseTime = 1;
-
 public:
     explicit QCalculatorModel(QObject *parent = nullptr);
 
@@ -25,9 +23,16 @@ public:
 public slots:
     void receiveRequest(requestAction AAction, double AFirstOperand, double ASecondOperand);
 
-signals:
+    void receiveResultReady();
 
-    void sendResult(double AResult, errorType AError);
+    void receiveDelay(int ADelay);
+
+signals:
+    void sendResult(double AResult, errorType AErrType, int resultArrayLength);
+
+    void sendRequestDataLength(int ALength);
+
+
 
 };
 

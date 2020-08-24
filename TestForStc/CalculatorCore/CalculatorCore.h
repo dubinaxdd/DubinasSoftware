@@ -21,7 +21,7 @@ public:
 public slots:
 
 signals:
-    void sendResult();
+    void sendResultReady();
 
 };
 
