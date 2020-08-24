@@ -73,7 +73,7 @@ void QCalculatorForm::NewAction(CalcActionType AActionType)
     if (AActionType == actEqualy)
     {
         newCalcString.Type = calcResult;
-        newCalcString.String = "Ожидание результата [_]";
+        newCalcString.String = "Ожидание результата";
 
         m_CalcStringVector.append(newCalcString);
 
@@ -376,7 +376,14 @@ QString QCalculatorForm::mainText() const
     for( int i = 0; i < m_CalcStringVector.length(); i++)
     {
         if (m_CalcStringVector.at(i).Type == calcResult)
-            ReturnedText.append("<font color=\"Yellow\">");
+        {
+            if (m_CalcStringVector.at(i).String.left(2) == "Ож")
+                ReturnedText.append("<font color=\"Yellow\">");
+            else if (m_CalcStringVector.at(i).String.left(2) == "Ош")
+                ReturnedText.append("<font color=\"Red\">");
+            else
+                ReturnedText.append("<font color=\"Blue\">");
+        }
         else
             ReturnedText.append("<font color=\"LimeGreen\">");
 
@@ -439,7 +446,7 @@ void QCalculatorForm::receiveResult(double AResult, errorType AErrType, int resu
 
                 case errNullDivision:
                 {
-                    m_CalcStringVector[i].String = "Ошибка: Деление на ноль.";
+                    m_CalcStringVector[i].String = "Ошибка: Деление на ноль";
                     break;
                 }
             }

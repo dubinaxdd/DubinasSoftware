@@ -4,6 +4,8 @@
 #include <QObject>
 #include <ThreadSafeCalcDataManager.h>
 #include <QThread>
+#include "CalculatorLibrary/libcalculator/Libcalculator.h"
+
 
 class QCalculatorCore : public QThread
 {

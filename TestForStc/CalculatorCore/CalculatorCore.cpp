@@ -1,6 +1,5 @@
 #include "CalculatorCore.h"
 
-
 QCalculatorCore::QCalculatorCore(TThreadSafeCalcDataManager *ADataManager, QObject *parent)
 {
     Q_UNUSED(parent);
@@ -15,10 +14,50 @@ void QCalculatorCore::run()
         if (m_DataManager->getRequestsLength() > 0)
         {
             TCalculatorRequest NeedCalcRequest = m_DataManager->getFirstRequest();
+            Libcalculator::ErrorType *NewErrorType = new Libcalculator::ErrorType();
 
-            double Result = NeedCalcRequest.FirstOperand() + NeedCalcRequest.SecondOperand();
+            Libcalculator::TypeWorkEnum NeedType;
 
-            TCalculatorResult NewResult(Result, errorType::errNoError);
+            switch (NeedCalcRequest.Action())
+            {
+                case reqPlus:{
+                    NeedType = Libcalculator::TypeWorkEnum::twPlus;
+                    break;
+                }
+                case reqMinus:{
+                    NeedType = Libcalculator::TypeWorkEnum::twMinus;
+                    break;
+                }
+                case reqMultiplication:{
+                    NeedType = Libcalculator::TypeWorkEnum::twMultiplication;
+                    break;
+                }
+                case reqDivision:{
+                    NeedType = Libcalculator::TypeWorkEnum::twDivision;
+                    break;
+                }
+            }
+
+            double Result = Libcalculator::DoIt(NeedType, NeedCalcRequest.FirstOperand(), NeedCalcRequest.SecondOperand(), NewErrorType);
+
+            errorType NewError;
+
+            switch (*NewErrorType)
+            {
+                case Libcalculator::etNoError :{
+
+                    NewError = errorType::errNoError;
+                    break;
+                }
+                case Libcalculator::etNullDivision :{
+
+                    NewError = errorType::errNullDivision;
+                    break;
+                }
+
+            }
+
+            TCalculatorResult NewResult(Result, NewError);
 
             m_DataManager->appendResult(NewResult);
 

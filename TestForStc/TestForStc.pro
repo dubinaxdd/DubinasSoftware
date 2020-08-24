@@ -2,8 +2,6 @@ QT += quick \
     widgets \
     core
 
-#QT += core
-
 CONFIG += c++11
 
 # The following define makes your compiler emit warnings if you use
@@ -41,3 +39,10 @@ QML_DESIGNER_IMPORT_PATH =
 qnx: target.path = /tmp/$${TARGET}/bin
 else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
+
+
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build-libcalculator-Desktop_Qt_5_12_0_MinGW_64_bit-Release/release/ -llibcalculator
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build-libcalculator-Desktop_Qt_5_12_0_MinGW_64_bit-Debug/debug/ -llibcalculator
+
+INCLUDEPATH += $$PWD/CalculatorLibrary/libcalculator
+DEPENDPATH += $$PWD/CalculatorLibrary/libcalculator
