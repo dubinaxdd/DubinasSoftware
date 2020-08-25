@@ -2,7 +2,8 @@ QT += quick \
     widgets \
     core
 
-CONFIG += c++11
+CONFIG += c++11\
+            quickcontrols2
 
 # The following define makes your compiler emit warnings if you use
 # any Qt feature that has been marked deprecated (the exact warnings
@@ -41,8 +42,8 @@ else: unix:!android: target.path = /opt/$${TARGET}/bin
 !isEmpty(target.path): INSTALLS += target
 
 
-win32:CONFIG(release, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build-libcalculator-Desktop_Qt_5_12_0_MinGW_64_bit-Release/release/ -llibcalculator
-else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build-libcalculator-Desktop_Qt_5_12_0_MinGW_64_bit-Debug/debug/ -llibcalculator
+win32:CONFIG(release, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build/release/ -llibcalculator
+else:win32:CONFIG(debug, debug|release): LIBS += -L$$PWD/CalculatorLibrary/build/debug/ -llibcalculator
 
 INCLUDEPATH += $$PWD/CalculatorLibrary/libcalculator
 DEPENDPATH += $$PWD/CalculatorLibrary/libcalculator

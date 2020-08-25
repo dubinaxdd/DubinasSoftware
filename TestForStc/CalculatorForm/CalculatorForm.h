@@ -58,6 +58,8 @@ private:
     void NewAction(CalcActionType AActionType);
     void NewNumber();
 
+    void AppendNumSybol(QString AString);
+
 
 signals:
 

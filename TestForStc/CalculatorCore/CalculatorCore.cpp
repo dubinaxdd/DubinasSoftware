@@ -16,7 +16,7 @@ void QCalculatorCore::run()
             TCalculatorRequest NeedCalcRequest = m_DataManager->getFirstRequest();
             Libcalculator::ErrorType *NewErrorType = new Libcalculator::ErrorType();
 
-            Libcalculator::TypeWorkEnum NeedType;
+            Libcalculator::TypeWorkEnum NeedType = Libcalculator::TypeWorkEnum::twPlus;
 
             switch (NeedCalcRequest.Action())
             {
@@ -40,7 +40,7 @@ void QCalculatorCore::run()
 
             double Result = Libcalculator::DoIt(NeedType, NeedCalcRequest.FirstOperand(), NeedCalcRequest.SecondOperand(), NewErrorType);
 
-            errorType NewError;
+            errorType NewError = errNoError;
 
             switch (*NewErrorType)
             {
@@ -59,9 +59,9 @@ void QCalculatorCore::run()
 
             TCalculatorResult NewResult(Result, NewError);
 
-            m_DataManager->appendResult(NewResult);
-
             sleep(m_DataManager->getDelay());
+
+            m_DataManager->appendResult(NewResult);
 
             emit sendResultReady();
         }

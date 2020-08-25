@@ -29,7 +29,7 @@ unix {
 }
 !isEmpty(target.path): INSTALLS += target
 
-unix|win32: LIBS += -L$$OUT_PWD/./ -llibcalculator
+#unix|win32: LIBS += -L$$OUT_PWD/./ -llibcalculator
 
-INCLUDEPATH += $$PWD/.
-DEPENDPATH += $$PWD/.
+#INCLUDEPATH += $$PWD/.
+#DEPENDPATH += $$PWD/.

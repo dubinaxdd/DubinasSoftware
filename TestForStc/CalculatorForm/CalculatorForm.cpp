@@ -2,6 +2,7 @@
 #include "QDebug"
 
 #define DEFAULT_CONFIG_FILE_NAME "/config.ini"
+#define DEFAULT_NUMBER_STRING_MAX_LENGTH 15
 
 
 #include <QObject>
@@ -30,15 +31,16 @@ void QCalculatorForm::MinusCheck()
 
 void QCalculatorForm::NewAction(CalcActionType AActionType)
 {
-    if (m_CalcStringVector.last().String.length() == 1
-        && m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 1) == "-")
-
-        m_CalcStringVector.last().String.remove(m_CalcStringVector.last().String.length() - 1, 1);
+    if (m_CalcStringVector.last().String == "-")
+        m_CalcStringVector.last().String = "";
 
     if (m_CalcStringVector.last().String.isEmpty()
         || m_CalcStringVector.last().String.at(m_CalcStringVector.last().String.length() - 1) == ".")
 
         m_CalcStringVector.last().String.append("0");
+
+    if (m_CalcStringVector.last().String == "0.0")
+        m_CalcStringVector.last().String = "0";
 
     TCalcString newCalcString;
 
@@ -96,6 +98,13 @@ void QCalculatorForm::NewNumber()
     newCalcString.String = "";
 
     m_CalcStringVector.append(newCalcString);
+}
+
+void QCalculatorForm::AppendNumSybol(QString AString)
+{
+    if (m_CalcStringVector.last().String.length() < DEFAULT_NUMBER_STRING_MAX_LENGTH +
+            (m_CalcStringVector.last().String.left(1) == "-") ? 1 : 0)
+        m_CalcStringVector.last().String.append(AString);
 }
 
 void QCalculatorForm::readSettings()
@@ -201,70 +210,70 @@ void QCalculatorForm::buttonBackspace_onClick()
 void QCalculatorForm::button1_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("1");
+    AppendNumSybol("1");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button2_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("2");
+    AppendNumSybol("2");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button3_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("3");
+    AppendNumSybol("3");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button4_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("4");
+    AppendNumSybol("4");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button5_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("5");
+    AppendNumSybol("5");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button6_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("6");
+    AppendNumSybol("6");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button7_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("7");
+    AppendNumSybol("7");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button8_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("8");
+    AppendNumSybol("8");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button9_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("9");
+    AppendNumSybol("9");
     emit sendTextToView();
 }
 
 void QCalculatorForm::button0_onClick()
 {
     MinusCheck();
-    m_CalcStringVector.last().String.append("0");
+    AppendNumSybol("0");
 
     if ((m_CalcStringVector.last().String.length() == 1)
         || (m_CalcStringVector.last().String.length() == 2
@@ -440,7 +449,16 @@ void QCalculatorForm::receiveResult(double AResult, errorType AErrType, int resu
             {
                 case errNoError:
                 {
-                    m_CalcStringVector[i].String = QString::number(AResult);
+                    m_CalcStringVector[i].String = QString::number(AResult, 'f', 10);
+                    if (m_CalcStringVector[i].String.contains("."))
+                    {
+                        while (m_CalcStringVector[i].String.right(1) == "0")
+                            m_CalcStringVector[i].String.remove(m_CalcStringVector[i].String.length() -1, 1);
+                        if(m_CalcStringVector[i].String.right(1) == ".")
+                            m_CalcStringVector[i].String.remove(m_CalcStringVector[i].String.length() -1, 1);
+                    }
+
+
                     break;
                 }
 

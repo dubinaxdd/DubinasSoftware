@@ -18,6 +18,7 @@ class QCalculatorModel : public QObject
 
 public:
     explicit QCalculatorModel(QObject *parent = nullptr);
+    ~QCalculatorModel();
 
 
 public slots:

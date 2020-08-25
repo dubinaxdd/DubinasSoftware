@@ -12,6 +12,13 @@ QCalculatorModel::QCalculatorModel(QObject *parent) : QObject(parent)
     m_CalcCore->start(QThread::NormalPriority);
 }
 
+QCalculatorModel::~QCalculatorModel()
+{
+    m_CalcCore->quit();
+    free (m_CalcCore);
+    free (m_DataManager);
+}
+
 void QCalculatorModel::receiveRequest(requestAction AAction, double AFirstOperand, double ASecondOperand)
 {
     TCalculatorRequest NewRequest(AAction, AFirstOperand, ASecondOperand);

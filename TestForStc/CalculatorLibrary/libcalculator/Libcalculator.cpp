@@ -15,7 +15,6 @@ double Libcalculator::DoIt(Libcalculator::TypeWorkEnum ATypeWork, double AFirstO
         }
         case twMinus:
         {
-
             *AError = etNoError;
             return AFirstOperand - ASecondOperand;
         }
