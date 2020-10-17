@@ -6,7 +6,7 @@
 #include <ThreadSafeCalcDataManager.h>
 #include <CalculatorCore.h>
 
-
+//Привееет
 
 class QCalculatorModel : public QObject
 {
